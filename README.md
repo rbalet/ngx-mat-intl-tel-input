@@ -4,8 +4,8 @@ An Angular Material package for entering and validating international telephone 
 
 **Supports:**
 
-- Angular 14
-- Angular Material 14
+- Angular >=15
+- Angular Material >=15
 - ReactiveFormsModule
 - FormsModule
 - Validation with [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js)
@@ -55,6 +55,7 @@ Refer to main app in this repository for working example.
   [enablePlaceholder]="true"
   [enableSearch]="true"
   name="phone"
+  autocomplete="tel"
   (countryChanged)="yourComponentMethodToTreatyCountryChangedEvent($event)" // $event is a instance of current select Country
   formControlName="phone"></ngx-mat-intl-tel-input>
 </form>
@@ -70,6 +71,7 @@ If you want to show the sample number for the country selected or errors , use m
     [onlyCountries]="['us', 'gb', 'es']"
     [enablePlaceholder]="true"
     name="phone"
+    autocomplete="tel"
     formControlName="phone"
     #phone
   ></ngx-mat-intl-tel-input>

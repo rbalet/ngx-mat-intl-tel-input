@@ -1,6 +1,6 @@
 /* eslint-disable */
 
-import { Injectable } from '@angular/core';
+import { Injectable } from '@angular/core'
 @Injectable()
 export class CountryCode {
   public allCountries = [
@@ -40,9 +40,56 @@ export class CountryCode {
     ['Burundi (Uburundi)', 'bi', '257'],
     ['Cambodia (កម្ពុជា)', 'kh', '855'],
     ['Cameroon (Cameroun)', 'cm', '237'],
-    ['Canada', 'ca', '1', 1, ['204', '226', '236', '249', '250', '289', '306', '343', '365', '387', '403', '416', '418', '431', '437',
-      '438', '450', '506', '514', '519', '548', '579', '581', '587', '604', '613', '639', '647', '672', '705', '709', '742',
-      '778', '780', '782', '807', '819', '825', '867', '873', '902', '905']],
+    [
+      'Canada',
+      'ca',
+      '1',
+      1,
+      [
+        '204',
+        '226',
+        '236',
+        '249',
+        '250',
+        '289',
+        '306',
+        '343',
+        '365',
+        '387',
+        '403',
+        '416',
+        '418',
+        '431',
+        '437',
+        '438',
+        '450',
+        '506',
+        '514',
+        '519',
+        '548',
+        '579',
+        '581',
+        '587',
+        '604',
+        '613',
+        '639',
+        '647',
+        '672',
+        '705',
+        '709',
+        '742',
+        '778',
+        '780',
+        '782',
+        '807',
+        '819',
+        '825',
+        '867',
+        '873',
+        '902',
+        '905',
+      ],
+    ],
     ['Cape Verde (Kabu Verdi)', 'cv', '238'],
     ['Caribbean Netherlands', 'bq', '599', 1],
     ['Cayman Islands', 'ky', '1345'],
@@ -67,7 +114,8 @@ export class CountryCode {
     ['Denmark (Danmark)', 'dk', '45'],
     ['Djibouti', 'dj', '253'],
     ['Dominica', 'dm', '1767'],
-    ['Dominican Republic (República Dominicana)', 'do', '1', 2, ['809', '829', '849']], ['Ecuador', 'ec', '593'],
+    ['Dominican Republic (República Dominicana)', 'do', '1', 2, ['809', '829', '849']],
+    ['Ecuador', 'ec', '593'],
     ['Egypt (‫مصر‬‎)', 'eg', '20'],
     ['El Salvador', 'sv', '503'],
     ['Equatorial Guinea (Guinea Ecuatorial)', 'gq', '240'],
@@ -110,7 +158,8 @@ export class CountryCode {
     ['Isle of Man', 'im', '44', 2],
     ['Israel (‫ישראל‬‎)', 'il', '972'],
     ['Italy (Italia)', 'it', '39', 0],
-    ['Jamaica', 'jm', '1', 4, ['876', '658']], ['Japan (日本)', 'jp', '81'],
+    ['Jamaica', 'jm', '1', 4, ['876', '658']],
+    ['Japan (日本)', 'jp', '81'],
     ['Jersey', 'je', '44', 3],
     ['Jordan (‫الأردن‬‎)', 'jo', '962'],
     ['Kazakhstan (Казахстан)', 'kz', '7', 1],
@@ -176,7 +225,8 @@ export class CountryCode {
     ['Philippines', 'ph', '63'],
     ['Poland (Polska)', 'pl', '48'],
     ['Portugal', 'pt', '351'],
-    ['Puerto Rico', 'pr', '1', 3, ['787', '939']], ['Qatar (‫قطر‬‎)', 'qa', '974'],
+    ['Puerto Rico', 'pr', '1', 3, ['787', '939']],
+    ['Qatar (‫قطر‬‎)', 'qa', '974'],
     ['Réunion (La Réunion)', 're', '262', 0],
     ['Romania (România)', 'ro', '40'],
     ['Russia (Россия)', 'ru', '7', 0],
@@ -245,7 +295,8 @@ export class CountryCode {
     ['Yemen (‫اليمن‬‎)', 'ye', '967'],
     ['Zambia', 'zm', '260'],
     ['Zimbabwe', 'zw', '263'],
-    ['Åland Islands', 'ax', '358', 1]];
+    ['Åland Islands', 'ax', '358', 1],
+  ]
 }
 
 export const Examples: any = {
@@ -494,5 +545,5 @@ export const Examples: any = {
   YT: '639012345',
   ZA: '711234567',
   ZM: '955123456',
-  ZW: '712345678'
-};
+  ZW: '712345678',
+}
