@@ -70,7 +70,7 @@ const _ngxMatTelInputMixinBase: typeof ngxMatTelInputBase = mixinErrorState(
   // tslint:disable-next-line:component-selector
   selector: 'ngx-mat-tel-input',
   templateUrl: './ngx-mat-tel-input.component.html',
-  styleUrls: ['./ngx-mat-tel-input.component.css'],
+  styleUrls: ['./ngx-mat-tel-input.component.scss'],
   providers: [
     CountryCode,
     { provide: MatFormFieldControl, useExisting: ngxMatTelInputComponent },
