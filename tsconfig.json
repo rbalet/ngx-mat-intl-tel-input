@@ -15,8 +15,8 @@
     "typeRoots": ["node_modules/@types"],
     "lib": ["es2018", "es2020", "dom"],
     "paths": {
-      "ngx-mat-intl-tel-input": ["dist/ngx-mat-intl-tel-input"],
-      "ngx-mat-intl-tel-input/*": ["dist/ngx-mat-intl-tel-input/*"]
+      "ngx-mat-tel-input": ["dist/ngx-mat-tel-input"],
+      "ngx-mat-tel-input/*": ["dist/ngx-mat-tel-input/*"]
     }
   },
   "angularCompilerOptions": {

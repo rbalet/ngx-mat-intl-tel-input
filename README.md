@@ -1,4 +1,4 @@
-# International Telephone Input for Angular Material (NgxMatIntlTelInput)
+# International Telephone Input for Angular Material (ngxMatTelInput)
 
 An Angular Material package for entering and validating international telephone numbers. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
 
@@ -18,16 +18,16 @@ An Angular Material package for entering and validating international telephone 
 
 ### Install This Library
 
-`$ npm install ngx-mat-intl-tel-input --save`
+`$ npm install ngx-mat-tel-input --save`
 
 ## Usage
 
 ### Import
 
-Add `NgxMatIntlTelInputComponent` to your component file:
+Add `ngxMatTelInputComponent` to your component file:
 
 ```ts
-imports: [NgxMatIntlTelInputComponent];
+imports: [ngxMatTelInputComponent];
 ```
 
 ## Example
@@ -36,28 +36,28 @@ Refer to main app in this repository for working example.
 
 ```html
 <form #f="ngForm" [formGroup]="phoneForm">
-  <ngx-mat-intl-tel-input
+  <ngx-mat-tel-input
     [preferredCountries]="['us', 'gb']"
     [enablePlaceholder]="true"
     [enableSearch]="true"
     name="phone"
     describedBy="phoneInput"
     formControlName="phone"
-  ></ngx-mat-intl-tel-input>
+  ></ngx-mat-tel-input>
 </form>
 ```
 
 ```html
 
 <form #f="ngForm" [formGroup]="phoneForm">
-  <ngx-mat-intl-tel-input
+  <ngx-mat-tel-input
   [preferredCountries]="['us', 'gb']"
   [enablePlaceholder]="true"
   [enableSearch]="true"
   name="phone"
   autocomplete="tel"
   (countryChanged)="yourComponentMethodToTreatyCountryChangedEvent($event)" // $event is a instance of current select Country
-  formControlName="phone"></ngx-mat-intl-tel-input>
+  formControlName="phone"></ngx-mat-tel-input>
 </form>
 
 ```
@@ -66,7 +66,7 @@ If you want to show the sample number for the country selected or errors , use m
 
 ```html
 <form #f="ngForm" [formGroup]="phoneForm">
-  <ngx-mat-intl-tel-input
+  <ngx-mat-tel-input
     [preferredCountries]="['us', 'gb']"
     [onlyCountries]="['us', 'gb', 'es']"
     [enablePlaceholder]="true"
@@ -74,7 +74,7 @@ If you want to show the sample number for the country selected or errors , use m
     autocomplete="tel"
     formControlName="phone"
     #phone
-  ></ngx-mat-intl-tel-input>
+  ></ngx-mat-tel-input>
   <mat-hint>e.g. {{phone.selectedCountry.placeHolder}}</mat-hint>
   <mat-error *ngIf="f.form.controls['phone']?.errors?.required"
     >Required Field</mat-error
@@ -100,7 +100,7 @@ If you want to show the sample number for the country selected or errors , use m
 ## Library Contributions
 
 - Fork repo.
-- Go to `./projects/ngx-mat-intl-tel-input`
+- Go to `./projects/ngx-mat-tel-input`
 - Update `./src/lib` with new functionality.
 - Update README.md
 - Pull request.

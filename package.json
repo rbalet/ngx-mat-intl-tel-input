@@ -1,5 +1,5 @@
 {
-  "name": "ngx-mat-intl-tel-input",
+  "name": "ngx-mat-tel-input",
   "version": "16.0.0",
   "scripts": {
     "ng": "ng",
@@ -10,12 +10,12 @@
     "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "ng build ngx-mat-intl-tel-input --configuration production && npm publish ./dist/ngx-mat-intl-tel-input && npm i @ngx-mat-intl-tel-input@latest",
-    "build_lib": "ng build ngx-mat-intl-tel-input",
-    "npm_pack": "cd dist/ngx-mat-intl-tel-input && npm pack",
+    "publish": "ng build ngx-mat-tel-input --configuration production && npm publish ./dist/ngx-mat-tel-input && npm i @ngx-mat-tel-input@latest",
+    "build_lib": "ng build ngx-mat-tel-input",
+    "npm_pack": "cd dist/ngx-mat-tel-input && npm pack",
     "package": "npm run build_lib && npm run copy-files && npm run npm_pack",
-    "copy-license": "cp ./LICENSE ./dist/ngx-mat-intl-tel-input",
-    "copy-readme": "cp ./README.md ./dist/ngx-mat-intl-tel-input",
+    "copy-license": "cp ./LICENSE ./dist/ngx-mat-tel-input",
+    "copy-readme": "cp ./README.md ./dist/ngx-mat-tel-input",
     "copy-files": "npm run copy-license && npm run copy-readme"
   },
   "private": true,

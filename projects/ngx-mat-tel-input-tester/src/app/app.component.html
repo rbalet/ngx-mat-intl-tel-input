@@ -4,30 +4,18 @@
   <form #f="ngForm" [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
     <mat-form-field>
       <mat-label>Name</mat-label>
-      <input
-        matInput
-        placeholder="Name"
-        [formControl]="phoneForm.controls.name"
-      />
-      <mat-error *ngIf="phoneForm.controls.name.errors?.required">
-        Required Field
-      </mat-error>
+      <input matInput placeholder="Name" [formControl]="phoneForm.controls.name" />
+      <mat-error *ngIf="phoneForm.controls.name.errors?.required"> Required Field </mat-error>
     </mat-form-field>
 
     <mat-form-field>
       <mat-label>Surname</mat-label>
-      <input
-        matInput
-        placeholder="surname"
-        [formControl]="phoneForm.controls.surname"
-      />
-      <mat-error *ngIf="phoneForm.controls.surname.errors?.required">
-        Required Field
-      </mat-error>
+      <input matInput placeholder="surname" [formControl]="phoneForm.controls.surname" />
+      <mat-error *ngIf="phoneForm.controls.surname.errors?.required"> Required Field </mat-error>
     </mat-form-field>
 
     <mat-form-field style="width: 50%">
-      <ngx-mat-intl-tel-input
+      <ngx-mat-tel-input
         [cssClass]="'custom'"
         [preferredCountries]="['us', 'ca']"
         [enablePlaceholder]="true"
@@ -35,16 +23,10 @@
         placeholder="Enter Number"
         describedBy="phoneInput"
         #phone
-      ></ngx-mat-intl-tel-input>
+      ></ngx-mat-tel-input>
       <mat-hint>e.g. {{ phone.selectedCountry.placeHolder }}</mat-hint>
-      <mat-error *ngIf="phoneForm.controls.phone.errors?.required">
-        Required Field
-      </mat-error>
-      <mat-error
-        *ngIf="
-          f.submitted && phoneForm.controls.phone.errors?.validatePhoneNumber
-        "
-      >
+      <mat-error *ngIf="phoneForm.controls.phone.errors?.required"> Required Field </mat-error>
+      <mat-error *ngIf="f.submitted && phoneForm.controls.phone.errors?.validatePhoneNumber">
         Invalid Number
       </mat-error>
     </mat-form-field>
@@ -82,22 +64,14 @@
   <form #f1="ngForm" [formGroup]="profileForm">
     <mat-form-field>
       <mat-label> First Name:</mat-label>
-      <input
-        matInput
-        type="text"
-        [formControl]="profileForm.controls.firstName"
-      />
+      <input matInput type="text" [formControl]="profileForm.controls.firstName" />
     </mat-form-field>
     <mat-form-field>
       <mat-label> Last Name: </mat-label>
-      <input
-        matInput
-        type="text"
-        [formControl]="profileForm.controls.lastName"
-      />
+      <input matInput type="text" [formControl]="profileForm.controls.lastName" />
     </mat-form-field>
     <mat-form-field style="width: 50%">
-      <ngx-mat-intl-tel-input
+      <ngx-mat-tel-input
         [cssClass]="'custom'"
         [preferredCountries]="['cl', 've']"
         [enablePlaceholder]="true"
@@ -107,11 +81,9 @@
         [formControl]="profileForm.controls.phone"
         placeholder="Enter Number"
         #phone1
-      ></ngx-mat-intl-tel-input>
+      ></ngx-mat-tel-input>
       <mat-hint>e.g. {{ phone1.selectedCountry.placeHolder }}</mat-hint>
-      <mat-error *ngIf="profileForm.controls.phone.errors?.required">
-        Required Field
-      </mat-error>
+      <mat-error *ngIf="profileForm.controls.phone.errors?.required"> Required Field </mat-error>
       <mat-error *ngIf="profileForm.controls.phone.errors?.validatePhoneNumber">
         Invalid Number
       </mat-error>

@@ -5,7 +5,7 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
-import { NgxMatIntlTelInputComponent } from './../../../ngx-mat-intl-tel-input/src/lib/ngx-mat-intl-tel-input.component'
+import { ngxMatTelInputComponent } from '../../../ngx-mat-tel-input/src/lib/ngx-mat-tel-input.component'
 
 interface PhoneForm {
   name: FormControl<string | null>
@@ -31,11 +31,11 @@ interface ProfileForm {
     MatInputModule,
     MatButtonModule,
     MatDividerModule,
-    NgxMatIntlTelInputComponent,
+    ngxMatTelInputComponent,
   ],
 })
 export class AppComponent implements AfterViewInit {
-  @ViewChild(NgxMatIntlTelInputComponent) phoneInput: NgxMatIntlTelInputComponent | undefined
+  @ViewChild(ngxMatTelInputComponent) phoneInput: ngxMatTelInputComponent | undefined
 
   phoneForm = new FormGroup<PhoneForm>({
     name: new FormControl(null, [Validators.required]),

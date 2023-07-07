@@ -3,9 +3,9 @@
   "version": 1,
   "newProjectRoot": "projects",
   "projects": {
-    "ngx-mat-intl-tel-input": {
-      "root": "projects/ngx-mat-intl-tel-input",
-      "sourceRoot": "projects/ngx-mat-intl-tel-input/src",
+    "ngx-mat-tel-input": {
+      "root": "projects/ngx-mat-tel-input",
+      "sourceRoot": "projects/ngx-mat-tel-input/src",
       "projectType": "library",
       "prefix": "lib",
       "schematics": {
@@ -21,37 +21,37 @@
         "build": {
           "builder": "@angular-devkit/build-angular:ng-packagr",
           "options": {
-            "tsConfig": "projects/ngx-mat-intl-tel-input/tsconfig.lib.json",
-            "project": "projects/ngx-mat-intl-tel-input/ng-package.json"
+            "tsConfig": "projects/ngx-mat-tel-input/tsconfig.lib.json",
+            "project": "projects/ngx-mat-tel-input/ng-package.json"
           },
           "configurations": {
             "production": {
-              "tsConfig": "projects/ngx-mat-intl-tel-input/tsconfig.lib.prod.json"
+              "tsConfig": "projects/ngx-mat-tel-input/tsconfig.lib.prod.json"
             }
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-mat-intl-tel-input/src/test.ts",
-            "tsConfig": "projects/ngx-mat-intl-tel-input/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-mat-intl-tel-input/karma.conf.js"
+            "main": "projects/ngx-mat-tel-input/src/test.ts",
+            "tsConfig": "projects/ngx-mat-tel-input/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-mat-tel-input/karma.conf.js"
           }
         },
         "lint": {
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-mat-intl-tel-input/**/*.ts",
-              "projects/ngx-mat-intl-tel-input/**/*.html"
+              "projects/ngx-mat-tel-input/**/*.ts",
+              "projects/ngx-mat-tel-input/**/*.html"
             ]
           }
         }
       }
     },
-    "ngx-mat-intl-tel-input-tester": {
-      "root": "projects/ngx-mat-intl-tel-input-tester/",
-      "sourceRoot": "projects/ngx-mat-intl-tel-input-tester/src",
+    "ngx-mat-tel-input-tester": {
+      "root": "projects/ngx-mat-tel-input-tester/",
+      "sourceRoot": "projects/ngx-mat-tel-input-tester/src",
       "projectType": "application",
       "prefix": "app",
       "schematics": {},
@@ -60,18 +60,18 @@
           "builder": "@angular-devkit/build-angular:browser",
           "options": {
             "aot": true,
-            "outputPath": "dist/ngx-mat-intl-tel-input-tester",
-            "index": "projects/ngx-mat-intl-tel-input-tester/src/index.html",
-            "main": "projects/ngx-mat-intl-tel-input-tester/src/main.ts",
-            "polyfills": "projects/ngx-mat-intl-tel-input-tester/src/polyfills.ts",
-            "tsConfig": "projects/ngx-mat-intl-tel-input-tester/tsconfig.app.json",
+            "outputPath": "dist/ngx-mat-tel-input-tester",
+            "index": "projects/ngx-mat-tel-input-tester/src/index.html",
+            "main": "projects/ngx-mat-tel-input-tester/src/main.ts",
+            "polyfills": "projects/ngx-mat-tel-input-tester/src/polyfills.ts",
+            "tsConfig": "projects/ngx-mat-tel-input-tester/tsconfig.app.json",
             "assets": [
-              "projects/ngx-mat-intl-tel-input-tester/src/favicon.ico",
-              "projects/ngx-mat-intl-tel-input-tester/src/assets"
+              "projects/ngx-mat-tel-input-tester/src/favicon.ico",
+              "projects/ngx-mat-tel-input-tester/src/assets"
             ],
             "styles": [
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
-              "projects/ngx-mat-intl-tel-input-tester/src/styles.scss"
+              "projects/ngx-mat-tel-input-tester/src/styles.scss"
             ],
             "scripts": []
           },
@@ -79,8 +79,8 @@
             "production": {
               "fileReplacements": [
                 {
-                  "replace": "projects/ngx-mat-intl-tel-input-tester/src/environments/environment.ts",
-                  "with": "projects/ngx-mat-intl-tel-input-tester/src/environments/environment.prod.ts"
+                  "replace": "projects/ngx-mat-tel-input-tester/src/environments/environment.ts",
+                  "with": "projects/ngx-mat-tel-input-tester/src/environments/environment.prod.ts"
                 }
               ],
               "optimization": true,
@@ -107,33 +107,33 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-mat-intl-tel-input-tester:build"
+            "browserTarget": "ngx-mat-tel-input-tester:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-mat-intl-tel-input-tester:build:production"
+              "browserTarget": "ngx-mat-tel-input-tester:build:production"
             }
           }
         },
         "extract-i18n": {
           "builder": "@angular-devkit/build-angular:extract-i18n",
           "options": {
-            "browserTarget": "ngx-mat-intl-tel-input-tester:build"
+            "browserTarget": "ngx-mat-tel-input-tester:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
-            "main": "projects/ngx-mat-intl-tel-input-tester/src/test.ts",
-            "polyfills": "projects/ngx-mat-intl-tel-input-tester/src/polyfills.ts",
-            "tsConfig": "projects/ngx-mat-intl-tel-input-tester/tsconfig.spec.json",
-            "karmaConfig": "projects/ngx-mat-intl-tel-input-tester/karma.conf.js",
+            "main": "projects/ngx-mat-tel-input-tester/src/test.ts",
+            "polyfills": "projects/ngx-mat-tel-input-tester/src/polyfills.ts",
+            "tsConfig": "projects/ngx-mat-tel-input-tester/tsconfig.spec.json",
+            "karmaConfig": "projects/ngx-mat-tel-input-tester/karma.conf.js",
             "assets": [
-              "projects/ngx-mat-intl-tel-input-tester/src/favicon.ico",
-              "projects/ngx-mat-intl-tel-input-tester/src/assets"
+              "projects/ngx-mat-tel-input-tester/src/favicon.ico",
+              "projects/ngx-mat-tel-input-tester/src/assets"
             ],
             "styles": [
-              "projects/ngx-mat-intl-tel-input-tester/src/styles.scss"
+              "projects/ngx-mat-tel-input-tester/src/styles.scss"
             ],
             "scripts": []
           }
@@ -142,20 +142,20 @@
           "builder": "@angular-eslint/builder:lint",
           "options": {
             "lintFilePatterns": [
-              "projects/ngx-mat-intl-tel-input-tester//**/*.ts",
-              "projects/ngx-mat-intl-tel-input-tester//**/*.html"
+              "projects/ngx-mat-tel-input-tester//**/*.ts",
+              "projects/ngx-mat-tel-input-tester//**/*.html"
             ]
           }
         },
         "e2e": {
           "builder": "@angular-devkit/build-angular:protractor",
           "options": {
-            "protractorConfig": "projects/ngx-mat-intl-tel-input-tester/e2e/protractor.conf.js",
-            "devServerTarget": "ngx-mat-intl-tel-input-tester:serve"
+            "protractorConfig": "projects/ngx-mat-tel-input-tester/e2e/protractor.conf.js",
+            "devServerTarget": "ngx-mat-tel-input-tester:serve"
           },
           "configurations": {
             "production": {
-              "devServerTarget": "ngx-mat-intl-tel-input-tester:serve:production"
+              "devServerTarget": "ngx-mat-tel-input-tester:serve:production"
             }
           }
         }
@@ -163,6 +163,8 @@
     }
   },
   "cli": {
-    "schematicCollections": ["@angular-eslint/schematics"]
+    "schematicCollections": [
+      "@angular-eslint/schematics"
+    ]
   }
 }

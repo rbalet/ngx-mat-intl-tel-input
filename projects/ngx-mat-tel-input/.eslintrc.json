@@ -1,18 +1,13 @@
 {
   "extends": "../../.eslintrc.json",
-  "ignorePatterns": [
-    "!**/*"
-  ],
+  "ignorePatterns": ["!**/*"],
   "overrides": [
     {
-      "files": [
-        "*.ts"
-      ],
+      "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "projects/ngx-mat-intl-tel-input-tester//tsconfig.app.json",
-          "projects/ngx-mat-intl-tel-input-tester//tsconfig.spec.json",
-          "projects/ngx-mat-intl-tel-input-tester//e2e/tsconfig.json"
+          "projects/ngx-mat-tel-input/tsconfig.lib.json",
+          "projects/ngx-mat-tel-input/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },
@@ -21,7 +16,7 @@
           "error",
           {
             "type": "element",
-            "prefix": "app",
+            "prefix": "lib",
             "style": "kebab-case"
           }
         ],
@@ -29,7 +24,7 @@
           "error",
           {
             "type": "attribute",
-            "prefix": "app",
+            "prefix": "lib",
             "style": "camelCase"
           }
         ],
@@ -39,17 +34,12 @@
             "accessibility": "explicit"
           }
         ],
-        "arrow-parens": [
-          "off",
-          "always"
-        ],
+        "arrow-parens": ["off", "always"],
         "import/order": "off"
       }
     },
     {
-      "files": [
-        "*.html"
-      ],
+      "files": ["*.html"],
       "rules": {}
     }
   ]

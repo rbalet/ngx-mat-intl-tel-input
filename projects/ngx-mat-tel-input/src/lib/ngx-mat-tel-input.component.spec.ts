@@ -6,12 +6,12 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms'
 import { MatButtonModule } from '@angular/material/button'
 import { MatInputModule } from '@angular/material/input'
 import { MatMenuModule } from '@angular/material/menu'
-import { NgxMatIntlTelInputComponent } from './ngx-mat-intl-tel-input.component'
+import { ngxMatTelInputComponent } from './ngx-mat-tel-input.component'
 import { SearchPipe } from './search.pipe'
 
-describe('NgxMatIntlTelInputComponent', () => {
-  let component: NgxMatIntlTelInputComponent
-  let fixture: ComponentFixture<NgxMatIntlTelInputComponent>
+describe('ngxMatTelInputComponent', () => {
+  let component: ngxMatTelInputComponent
+  let fixture: ComponentFixture<ngxMatTelInputComponent>
 
   beforeEach(waitForAsync(() => {
     TestBed.configureTestingModule({
@@ -23,14 +23,14 @@ describe('NgxMatIntlTelInputComponent', () => {
         MatButtonModule,
         MatDividerModule,
         ReactiveFormsModule,
-        NgxMatIntlTelInputComponent,
+        ngxMatTelInputComponent,
         SearchPipe,
       ],
     }).compileComponents()
   }))
 
   beforeEach(() => {
-    fixture = TestBed.createComponent(NgxMatIntlTelInputComponent)
+    fixture = TestBed.createComponent(ngxMatTelInputComponent)
     component = fixture.componentInstance
     fixture.detectChanges()
   })
