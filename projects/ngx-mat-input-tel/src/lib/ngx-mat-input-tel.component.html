@@ -1,4 +1,4 @@
-<div class="ngx-mat-tel-input-container">
+<div class="ngx-mat-input-tel-container">
   <button
     type="button"
     mat-button
@@ -6,19 +6,16 @@
     class="country-selector"
     [disabled]="disabled"
   >
-    <span
-      class="country-selector-flag flag"
-      [ngClass]="selectedCountry.flagClass"
-    ></span>
+    <span class="country-selector-flag flag" [ngClass]="selectedCountry.flagClass"></span>
     <span class="country-selector-code" *ngIf="selectedCountry?.dialCode"
       >+{{ selectedCountry.dialCode }}</span
     >
   </button>
   <mat-menu
     #menu="matMenu"
-    class="ngx-mat-tel-input-mat-menu-panel"
-    backdropClass="ngx-mat-tel-input-overlay-backdrop"
-    overlayPanelClass="ngx-mat-tel-input-overlay-pane"
+    class="ngx-mat-input-tel-mat-menu-panel"
+    backdropClass="ngx-mat-input-tel-overlay-backdrop"
+    overlayPanelClass="ngx-mat-input-tel-overlay-pane"
   >
     <input
       *ngIf="enableSearch"
@@ -55,9 +52,7 @@
         <div class="icon-wrapper">
           <div class="flag" [ngClass]="country.flagClass"></div>
         </div>
-        <div class="label-wrapper">
-          {{ country.name }} +{{ country.dialCode }}
-        </div>
+        <div class="label-wrapper">{{ country.name }} +{{ country.dialCode }}</div>
       </button>
     </ng-container>
   </mat-menu>

@@ -6,8 +6,8 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "projects/ngx-mat-tel-input/tsconfig.lib.json",
-          "projects/ngx-mat-tel-input/tsconfig.spec.json"
+          "projects/ngx-mat-input-tel/tsconfig.lib.json",
+          "projects/ngx-mat-input-tel/tsconfig.spec.json"
         ],
         "createDefaultProgram": true
       },

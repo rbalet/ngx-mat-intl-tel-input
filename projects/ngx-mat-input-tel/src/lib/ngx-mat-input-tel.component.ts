@@ -44,10 +44,10 @@ import { Subject } from 'rxjs'
 import { CountryCode, Examples } from './data/country-code'
 import { Country } from './model/country.model'
 import { PhoneNumberFormat } from './model/phone-number-format.model'
-import { phoneNumberValidator } from './ngx-mat-tel-input.validator'
+import { phoneNumberValidator } from './ngx-mat-input-tel.validator'
 import { SearchPipe } from './search.pipe'
 
-class ngxMatTelInputBase {
+class ngxMatInputTelBase {
   // tslint:disable-next-line:variable-name
   constructor(
     public _defaultErrorStateMatcher: ErrorStateMatcher,
@@ -61,19 +61,19 @@ class ngxMatTelInputBase {
 }
 
 // tslint:disable-next-line:variable-name
-const _ngxMatTelInputMixinBase: typeof ngxMatTelInputBase = mixinErrorState(
-  ngxMatTelInputBase as _AbstractConstructor<any>,
+const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
+  ngxMatInputTelBase as _AbstractConstructor<any>,
 )
 
 @Component({
   standalone: true,
   // tslint:disable-next-line:component-selector
-  selector: 'ngx-mat-tel-input',
-  templateUrl: './ngx-mat-tel-input.component.html',
-  styleUrls: ['./ngx-mat-tel-input.component.scss'],
+  selector: 'ngx-mat-input-tel',
+  templateUrl: './ngx-mat-input-tel.component.html',
+  styleUrls: ['./ngx-mat-input-tel.component.scss'],
   providers: [
     CountryCode,
-    { provide: MatFormFieldControl, useExisting: NgxMatTelInputComponent },
+    { provide: MatFormFieldControl, useExisting: NgxMatInputTelComponent },
     {
       provide: NG_VALIDATORS,
       useValue: phoneNumberValidator,
@@ -94,8 +94,8 @@ const _ngxMatTelInputMixinBase: typeof ngxMatTelInputBase = mixinErrorState(
     SearchPipe,
   ],
 })
-export class NgxMatTelInputComponent
-  extends _ngxMatTelInputMixinBase
+export class NgxMatInputTelComponent
+  extends _ngxMatInputTelMixinBase
   implements OnInit, OnDestroy, DoCheck
 {
   static nextId = 0
@@ -128,7 +128,7 @@ export class NgxMatTelInputComponent
   stateChanges = new Subject<void>()
   focused = false
   @HostBinding()
-  id = `ngx-mat-tel-input-${NgxMatTelInputComponent.nextId++}`
+  id = `ngx-mat-input-tel-${NgxMatInputTelComponent.nextId++}`
   describedBy = ''
   phoneNumber?: E164Number | NationalNumber = ''
   allCountries: Array<Country> = []
@@ -296,7 +296,7 @@ export class NgxMatTelInputComponent
       }
 
       if (this.enablePlaceholder) {
-        country.placeHolder = NgxMatTelInputComponent.getPhoneNumberPlaceHolder(
+        country.placeHolder = NgxMatInputTelComponent.getPhoneNumberPlaceHolder(
           country.iso2.toUpperCase(),
         )
       }

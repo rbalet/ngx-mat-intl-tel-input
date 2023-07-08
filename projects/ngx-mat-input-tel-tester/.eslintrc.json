@@ -6,9 +6,9 @@
       "files": ["*.ts"],
       "parserOptions": {
         "project": [
-          "projects/ngx-mat-tel-input-tester//tsconfig.app.json",
-          "projects/ngx-mat-tel-input-tester//tsconfig.spec.json",
-          "projects/ngx-mat-tel-input-tester//e2e/tsconfig.json"
+          "projects/ngx-mat-input-tel-tester//tsconfig.app.json",
+          "projects/ngx-mat-input-tel-tester//tsconfig.spec.json",
+          "projects/ngx-mat-input-tel-tester//e2e/tsconfig.json"
         ],
         "createDefaultProgram": true
       },

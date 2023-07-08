@@ -12,10 +12,10 @@ $color-black: #000;
   }
 
   .country-selector-code {
-    color: var(--ngxMatTelInput-color, $color-black);
+    color: var(--ngxMatInputTel-color, $color-black);
   }
 
-  .ngx-mat-tel-input-container {
+  .ngx-mat-input-tel-container {
     display: flex;
   }
 
@@ -69,13 +69,13 @@ $color-black: #000;
 
   .country-selector {
     border-radius: 0;
-    color: var(--ngxMatTelInput-color, ($color-black, 0.87));
+    color: var(--ngxMatInputTel-color, ($color-black, 0.87));
     flex-shrink: 0;
     height: initial;
     line-height: unset;
     width: 90px;
     padding: 1px;
-    opacity: var(--ngxMatTelInput-opacity, 0);
+    opacity: var(--ngxMatInputTel-opacity, 0);
     transition: opacity 200ms;
     position: absolute;
     z-index: 1;

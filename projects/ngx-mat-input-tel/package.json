@@ -1,5 +1,5 @@
 {
-  "name": "ngx-mat-tel-input",
+  "name": "ngx-mat-input-tel",
   "version": "16.1.0",
   "author": {
     "name": "Raphaël Balet",
@@ -18,7 +18,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git+https://github.com/rbalet/ngx-mat-tel-input"
+    "url": "git+https://github.com/rbalet/ngx-mat-input-tel"
   },
   "keywords": [
     "angular",
