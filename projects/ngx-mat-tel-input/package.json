@@ -1,6 +1,6 @@
 {
-  "name": "@megaphone/ngx-mat-tel-input",
-  "version": "16.0.0",
+  "name": "ngx-mat-tel-input",
+  "version": "16.1.0",
   "author": {
     "name": "Raphaël Balet",
     "email": "raphael.balet@outlook.com"
@@ -15,10 +15,6 @@
     "@angular/platform-browser": ">=15.x",
     "@angular/platform-browser-dynamic": ">=15.x",
     "libphonenumber-js": "^1.10.37"
-  },
-  "publishConfig": {
-    "access": "restricted",
-    "registry": "http://172.16.70.42:4873/"
   },
   "repository": {
     "type": "git",

@@ -1,6 +1,8 @@
 # International Telephone Input for Angular Material (ngxMatTelInput)
-
 An Angular Material package for entering and validating international telephone numbers. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
+
+## Caution
+This is a fork from the [ngx-mat-intl-tel-input](https://github.com/tanansatpal/ngx-mat-intl-tel-input) library whish does not seems to be maintained anymore. _Last commit is over a year_
 
 **Supports:**
 
@@ -14,20 +16,20 @@ An Angular Material package for entering and validating international telephone 
 
 ### Install Dependencies
 
-`$ npm install libphonenumber-js --save`
+`$ npm i libphonenumber-js@latest`
 
 ### Install This Library
 
-`$ npm install ngx-mat-tel-input --save`
+`$ npm i ngx-mat-tel-input@latest`
 
 ## Usage
 
 ### Import
 
-Add `ngxMatTelInputComponent` to your component file:
+Add `NgxMatTelInputComponent` to your component file:
 
 ```ts
-imports: [ngxMatTelInputComponent];
+imports: [NgxMatTelInputComponent];
 ```
 
 ## Example
@@ -97,6 +99,12 @@ If you want to show the sample number for the country selected or errors , use m
 | format             | `string`   | `default`   | Format of "as you type" input. Possible values: national, international, default    |
 | describedBy        | `string`   | `undefined` | Use aria-described by with the input field                                          |
 
+## Css variable
+| Name                       | Default | Explanation                                         |
+| -------------------------- | ------- | --------------------------------------------------- |
+| `--ngxMatTelInput-color`   | `#000`  | If you wish to change the overall color             |
+| `--ngxMatTelInput-opacity` | `0`     | If you wish the country flag to be shown by default |
+
 ## Library Contributions
 
 - Fork repo.
@@ -119,3 +127,6 @@ After building and creating package, you can use it locally too.
 In your project run:
 
 `$ npm install --save {{path to your local '*.tgz' package file}}`
+
+### Acknowledgments
+This repo is a fork from the [ngx-mat-intl-tel-input](https://github.com/tanansatpal/ngx-mat-intl-tel-input) library.

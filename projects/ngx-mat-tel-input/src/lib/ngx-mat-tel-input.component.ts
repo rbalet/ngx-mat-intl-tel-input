@@ -73,7 +73,7 @@ const _ngxMatTelInputMixinBase: typeof ngxMatTelInputBase = mixinErrorState(
   styleUrls: ['./ngx-mat-tel-input.component.scss'],
   providers: [
     CountryCode,
-    { provide: MatFormFieldControl, useExisting: ngxMatTelInputComponent },
+    { provide: MatFormFieldControl, useExisting: NgxMatTelInputComponent },
     {
       provide: NG_VALIDATORS,
       useValue: phoneNumberValidator,
@@ -94,7 +94,7 @@ const _ngxMatTelInputMixinBase: typeof ngxMatTelInputBase = mixinErrorState(
     SearchPipe,
   ],
 })
-export class ngxMatTelInputComponent
+export class NgxMatTelInputComponent
   extends _ngxMatTelInputMixinBase
   implements OnInit, OnDestroy, DoCheck
 {
@@ -128,7 +128,7 @@ export class ngxMatTelInputComponent
   stateChanges = new Subject<void>()
   focused = false
   @HostBinding()
-  id = `ngx-mat-tel-input-${ngxMatTelInputComponent.nextId++}`
+  id = `ngx-mat-tel-input-${NgxMatTelInputComponent.nextId++}`
   describedBy = ''
   phoneNumber?: E164Number | NationalNumber = ''
   allCountries: Array<Country> = []
@@ -296,7 +296,7 @@ export class ngxMatTelInputComponent
       }
 
       if (this.enablePlaceholder) {
-        country.placeHolder = ngxMatTelInputComponent.getPhoneNumberPlaceHolder(
+        country.placeHolder = NgxMatTelInputComponent.getPhoneNumberPlaceHolder(
           country.iso2.toUpperCase(),
         )
       }
