@@ -345,6 +345,8 @@ export class NgxMatInputTelComponent
       } else {
         this.phoneNumber = value
       }
+    } else if (this.phoneNumber !== '') {
+      this.reset()
     }
 
     // Value is set from outside using setValue()
