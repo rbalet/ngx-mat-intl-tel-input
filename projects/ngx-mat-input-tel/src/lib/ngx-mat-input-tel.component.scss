@@ -78,7 +78,6 @@ $color-black: #000;
     opacity: var(--ngxMatInputTel-opacity, 0);
     transition: opacity 200ms;
     position: absolute;
-    z-index: 1;
     top: 0;
     bottom: 0;
     right: auto;
