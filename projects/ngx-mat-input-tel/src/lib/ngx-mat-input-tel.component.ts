@@ -48,26 +48,21 @@ import { phoneNumberValidator } from './ngx-mat-input-tel.validator'
 import { SearchPipe } from './search.pipe'
 
 class ngxMatInputTelBase {
-  // tslint:disable-next-line:variable-name
   constructor(
     public _defaultErrorStateMatcher: ErrorStateMatcher,
-    // tslint:disable-next-line:variable-name
     public _parentForm: NgForm,
-    // tslint:disable-next-line:variable-name
     public _parentFormGroup: FormGroupDirective,
     /** @docs-private */
     public ngControl: NgControl,
   ) {}
 }
 
-// tslint:disable-next-line:variable-name
 const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
   ngxMatInputTelBase as _AbstractConstructor<any>,
 )
 
 @Component({
   standalone: true,
-  // tslint:disable-next-line:component-selector
   selector: 'ngx-mat-input-tel',
   templateUrl: './ngx-mat-input-tel.component.html',
   styleUrls: ['./ngx-mat-input-tel.component.scss'],
@@ -99,14 +94,15 @@ export class NgxMatInputTelComponent
   implements OnInit, OnDestroy, DoCheck
 {
   static nextId = 0
+  @ViewChild(MatMenu) matMenu!: MatMenu
 
-  @Input() preferredCountries: Array<string> = []
+  @Input() preferredCountries: string[] = []
   @Input() enablePlaceholder = true
-  @Input() inputPlaceholder!: string
+  @Input() inputPlaceholder: string = ''
   @Input() cssClass?: string
   @Input() name?: string
-  @Input() onlyCountries: Array<string> = []
-  @Input() errorStateMatcher!: ErrorStateMatcher
+  @Input() onlyCountries: string[] = []
+  @Input() errorStateMatcher: ErrorStateMatcher = this._defaultErrorStateMatcher
   @Input() enableSearch = false
   @Input() searchPlaceholder?: string
   @Input() autocomplete: 'off' | 'tel' = 'off'
@@ -121,7 +117,6 @@ export class NgxMatInputTelComponent
     this.stateChanges.next()
   }
 
-  @ViewChild(MatMenu) matMenu!: MatMenu
   private _placeholder?: string
   private _required = false
   private _disabled = false
@@ -131,8 +126,8 @@ export class NgxMatInputTelComponent
   id = `ngx-mat-input-tel-${NgxMatInputTelComponent.nextId++}`
   describedBy = ''
   phoneNumber?: E164Number | NationalNumber = ''
-  allCountries: Array<Country> = []
-  preferredCountriesInDropDown: Array<Country> = []
+  allCountries: Country[] = []
+  preferredCountriesInDropDown: Country[] = []
   selectedCountry!: Country
   numberInstance?: PhoneNumber
   value?: any
@@ -162,11 +157,8 @@ export class NgxMatInputTelComponent
     private fm: FocusMonitor,
     private elRef: ElementRef<HTMLElement>,
     @Optional() @Self() _ngControl: NgControl,
-    // tslint:disable-next-line:variable-name
     @Optional() _parentForm: NgForm,
-    // tslint:disable-next-line:variable-name
     @Optional() _parentFormGroup: FormGroupDirective,
-    // tslint:disable-next-line:variable-name
     _defaultErrorStateMatcher: ErrorStateMatcher,
   ) {
     super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, _ngControl)
