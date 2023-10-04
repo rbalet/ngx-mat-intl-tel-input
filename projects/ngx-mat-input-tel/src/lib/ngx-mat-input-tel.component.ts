@@ -95,6 +95,7 @@ export class NgxMatInputTelComponent
 {
   static nextId = 0
   @ViewChild(MatMenu) matMenu!: MatMenu
+  @ViewChild('focusable', { static: false }) focusable!: ElementRef
 
   @Input() preferredCountries: string[] = []
   @Input() enablePlaceholder = true
@@ -150,6 +151,8 @@ export class NgxMatInputTelComponent
   onTouched = () => {}
 
   propagateChange = (_: any) => {}
+
+  private errorState?: boolean
 
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
@@ -209,10 +212,15 @@ export class NgxMatInputTelComponent
   }
   ngDoCheck(): void {
     if (this.ngControl) {
-      this._defaultErrorStateMatcher.isErrorState(
-        this.ngControl.control as any,
-        this._parentForm as any,
+      const isInvalide = this.errorStateMatcher.isErrorState(
+        this.ngControl.control,
+        this._parentForm,
       )
+
+      this.errorState =
+        (isInvalide && !this.ngControl.control?.value) || (!this.focused ? isInvalide : false)
+
+      if (isInvalide && this.ngControl.control?.touched) this.focusable.nativeElement.focus()
     }
   }
   public onPhoneNumberChange(): void {
