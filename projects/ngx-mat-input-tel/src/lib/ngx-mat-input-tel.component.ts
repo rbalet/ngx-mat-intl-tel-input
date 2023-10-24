@@ -52,7 +52,6 @@ class ngxMatInputTelBase {
     public _defaultErrorStateMatcher: ErrorStateMatcher,
     public _parentForm: NgForm,
     public _parentFormGroup: FormGroupDirective,
-    /** @docs-private */
     public ngControl: NgControl,
   ) {}
 }
@@ -220,8 +219,6 @@ export class NgxMatInputTelComponent
 
       this.errorState =
         (isInvalide && !this.ngControl.control?.value) || (!this.focused ? isInvalide : false)
-
-      if (isInvalide && this.ngControl.control?.touched) this.focusable.nativeElement.focus()
     }
   }
   public onPhoneNumberChange(): void {
