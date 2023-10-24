@@ -95,6 +95,7 @@ export class NgxMatInputTelComponent
 {
   static nextId = 0
   @ViewChild(MatMenu) matMenu!: MatMenu
+  @ViewChild('menuSearchInput', { static: false }) menuSearchInput?: ElementRef<HTMLInputElement>
   @ViewChild('focusable', { static: false }) focusable!: ElementRef
 
   @Input() preferredCountries: string[] = []

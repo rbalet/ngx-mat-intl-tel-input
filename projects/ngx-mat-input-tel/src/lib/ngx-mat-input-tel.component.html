@@ -5,12 +5,14 @@
     [matMenuTriggerFor]="menu"
     class="country-selector"
     [disabled]="disabled"
+    (menuOpened)="menuSearchInput?.nativeElement?.focus()"
   >
     <span class="country-selector-flag flag" [ngClass]="selectedCountry.flagClass"></span>
     <span class="country-selector-code" *ngIf="selectedCountry?.dialCode"
       >+{{ selectedCountry.dialCode }}</span
     >
   </button>
+
   <mat-menu
     #menu="matMenu"
     class="ngx-mat-input-tel-mat-menu-panel"
@@ -18,12 +20,22 @@
     overlayPanelClass="ngx-mat-input-tel-overlay-pane"
   >
     <input
+      #menuSearchInput
       *ngIf="enableSearch"
       class="country-search"
       [(ngModel)]="searchCriteria"
       type="text"
       [placeholder]="searchPlaceholder"
       (click)="$event.stopPropagation()"
+      style="
+        width: 100%;
+        height: 34px;
+        border: none;
+        border-bottom: 1px solid #ddd;
+        font-size: 14px;
+        padding: 20px 20px 24px;
+        box-sizing: border-box;
+      "
     />
     <button
       type="button"
