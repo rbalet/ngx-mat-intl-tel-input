@@ -14,13 +14,13 @@ This is a fork from the [ngx-mat-intl-tel-input](https://github.com/tanansatpal/
 
 ## Installation
 
-### Install Dependencies
-
-`$ npm i libphonenumber-js@latest`
-
 ### Install This Library
 
 `$ npm i ngx-mat-input-tel@latest`
+
+### Install Dependencies _Optional_
+
+`$ npm i libphonenumber-js@latest`
 
 ## Usage
 

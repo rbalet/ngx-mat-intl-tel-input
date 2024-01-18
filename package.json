@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-input-tel",
-  "version": "17.1.",
+  "version": "17.1.2",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
