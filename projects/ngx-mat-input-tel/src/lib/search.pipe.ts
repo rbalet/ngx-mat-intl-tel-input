@@ -1,6 +1,6 @@
 import { Pipe, PipeTransform } from '@angular/core'
 
-import { Country } from './model/country.model'
+import { Country } from '../lib/model/country.model'
 
 @Pipe({
   name: 'search',
@@ -13,7 +13,9 @@ export class SearchPipe implements PipeTransform {
       return true
     }
 
-    return `${country.name}+${country.dialCode}`
+    return `${country.name}+${country.dialCode}${
+      country.areaCodes ? country.areaCodes.join(',') : ''
+    }`
       .toLowerCase()
       .includes(searchCriteria.toLowerCase())
   }

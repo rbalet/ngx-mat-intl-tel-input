@@ -100,10 +100,11 @@ If you want to show the sample number for the country selected or errors , use m
 | describedBy        | `string`   | `undefined` | Use aria-described by with the input field                                          |
 
 ## Css variable
-| Name                       | Default | Explanation                                         |
-| -------------------------- | ------- | --------------------------------------------------- |
-| `--ngxMatInputTel-color`   | `#000`  | If you wish to change the overall color             |
-| `--ngxMatInputTel-opacity` | `0`     | If you wish the country flag to be shown by default |
+| Name                            | Default        | Explanation                                         |
+| ------------------------------- | -------------- | --------------------------------------------------- |
+| `--ngxMatInputTel-color`        | `#000`         | If you wish to change the overall color             |
+| `--ngxMatInputTel-opacity`      | `0`            | If you wish the country flag to be shown by default |
+| `--ngxMatInputTel-flag-display` | `inline-block` | If you wish to hide the country flag                |
 
 ## Library Contributions
 
