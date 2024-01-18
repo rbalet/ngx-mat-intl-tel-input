@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y'
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { CommonModule } from '@angular/common'
+import { NgClass, NgFor, NgIf } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -25,8 +25,12 @@ import {
   NgForm,
   ReactiveFormsModule,
 } from '@angular/forms'
-import { MatButtonModule } from '@angular/material/button'
-import { ErrorStateMatcher, _AbstractConstructor, mixinErrorState } from '@angular/material/core'
+import {
+  ErrorStateMatcher,
+  MatRippleModule,
+  _AbstractConstructor,
+  mixinErrorState,
+} from '@angular/material/core'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldControl } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
@@ -76,13 +80,19 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    CommonModule,
+    NgIf,
+    NgFor,
+    NgClass,
+
+    // Forms
     FormsModule,
-    MatInputModule,
-    MatMenuModule,
-    MatButtonModule,
-    MatDividerModule,
     ReactiveFormsModule,
+    MatInputModule,
+
+    // Mat
+    MatMenuModule,
+    MatRippleModule,
+    MatDividerModule,
 
     // Pipes
     SearchPipe,
@@ -90,12 +100,15 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
 })
 export class NgxMatInputTelComponent
   extends _ngxMatInputTelMixinBase
-  implements OnInit, OnDestroy, DoCheck
+  implements OnInit, DoCheck, OnDestroy
 {
   static nextId = 0
   @ViewChild(MatMenu) matMenu!: MatMenu
   @ViewChild('menuSearchInput', { static: false }) menuSearchInput?: ElementRef<HTMLInputElement>
   @ViewChild('focusable', { static: false }) focusable!: ElementRef
+
+  @HostBinding()
+  id = `ngx-mat-input-tel-${NgxMatInputTelComponent.nextId++}`
 
   @Input() preferredCountries: string[] = []
   @Input() enablePlaceholder = true
@@ -118,13 +131,14 @@ export class NgxMatInputTelComponent
     this.stateChanges.next()
   }
 
+  @Output()
+  countryChanged: EventEmitter<Country> = new EventEmitter<Country>()
+
   private _placeholder?: string
   private _required = false
   private _disabled = false
   stateChanges = new Subject<void>()
   focused = false
-  @HostBinding()
-  id = `ngx-mat-input-tel-${NgxMatInputTelComponent.nextId++}`
   describedBy = ''
   phoneNumber?: E164Number | NationalNumber = ''
   allCountries: Country[] = []
@@ -133,11 +147,8 @@ export class NgxMatInputTelComponent
   numberInstance?: PhoneNumber
   value?: any
   searchCriteria?: string
-  @Output()
-  countryChanged: EventEmitter<Country> = new EventEmitter<Country>()
 
-  private previousFormattedNumber?: string
-  // tslint:disable-next-line:variable-name
+  private _previousFormattedNumber?: string
   private _format: PhoneNumberFormat = 'default'
 
   static getPhoneNumberPlaceHolder(countryISOCode: any): string | undefined {
@@ -149,7 +160,6 @@ export class NgxMatInputTelComponent
   }
 
   onTouched = () => {}
-
   propagateChange = (_: any) => {}
 
   private errorState?: boolean
@@ -157,21 +167,23 @@ export class NgxMatInputTelComponent
   constructor(
     private _changeDetectorRef: ChangeDetectorRef,
     private countryCodeData: CountryCode,
-    private fm: FocusMonitor,
-    private elRef: ElementRef<HTMLElement>,
+    private _focusMonitor: FocusMonitor,
+    private _elementRef: ElementRef<HTMLElement>,
     @Optional() @Self() _ngControl: NgControl,
     @Optional() _parentForm: NgForm,
     @Optional() _parentFormGroup: FormGroupDirective,
     _defaultErrorStateMatcher: ErrorStateMatcher,
   ) {
     super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, _ngControl)
-    fm.monitor(elRef, true).subscribe((origin) => {
+
+    _focusMonitor.monitor(_elementRef, true).subscribe((origin) => {
       if (this.focused && !origin) {
         this.onTouched()
       }
       this.focused = !!origin
       this.stateChanges.next()
     })
+
     this.fetchCountryData()
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this
@@ -182,6 +194,7 @@ export class NgxMatInputTelComponent
     if (!this.searchPlaceholder) {
       this.searchPlaceholder = 'Search ...'
     }
+
     if (this.preferredCountries.length) {
       this.preferredCountries.forEach((iso2) => {
         const preferredCountry = this.allCountries
@@ -193,9 +206,11 @@ export class NgxMatInputTelComponent
         if (preferredCountry) this.preferredCountriesInDropDown.push(preferredCountry)
       })
     }
+
     if (this.onlyCountries.length) {
       this.allCountries = this.allCountries.filter((c) => this.onlyCountries.includes(c.iso2))
     }
+
     if (this.numberInstance && this.numberInstance.country) {
       // If an existing number is present, we use it to determine selectedCountry
       this.selectedCountry = this.getCountry(this.numberInstance.country)
@@ -206,10 +221,12 @@ export class NgxMatInputTelComponent
         this.selectedCountry = this.allCountries[0]
       }
     }
+
     this.countryChanged.emit(this.selectedCountry)
     this._changeDetectorRef.markForCheck()
     this.stateChanges.next()
   }
+
   ngDoCheck(): void {
     if (this.ngControl) {
       const isInvalide = this.errorStateMatcher.isErrorState(
@@ -221,6 +238,12 @@ export class NgxMatInputTelComponent
         (isInvalide && !this.ngControl.control?.value) || (!this.focused ? isInvalide : false)
     }
   }
+
+  ngOnDestroy() {
+    this.stateChanges.complete()
+    this._focusMonitor.stopMonitoring(this._elementRef)
+  }
+
   public onPhoneNumberChange(): void {
     if (!this.phoneNumber) return
 
@@ -400,7 +423,7 @@ export class NgxMatInputTelComponent
   onContainerClick(event: MouseEvent): void {
     if ((event.target as Element).tagName.toLowerCase() !== 'input') {
       // tslint:disable-next-line:no-non-null-assertion
-      this.elRef.nativeElement.querySelector('input')!.focus()
+      this._elementRef.nativeElement.querySelector('input')!.focus()
     }
   }
 
@@ -410,11 +433,6 @@ export class NgxMatInputTelComponent
 
     this._changeDetectorRef.markForCheck()
     this.stateChanges.next(undefined)
-  }
-
-  ngOnDestroy() {
-    this.stateChanges.complete()
-    this.fm.stopMonitoring(this.elRef)
   }
 
   private get formattedPhoneNumber(): string {
@@ -439,9 +457,9 @@ export class NgxMatInputTelComponent
     // To avoid caret positioning we apply formatting only if the caret is at the end:
     if (!this.phoneNumber) return
 
-    if (this.phoneNumber?.toString().startsWith(this.previousFormattedNumber || '')) {
+    if (this.phoneNumber?.toString().startsWith(this._previousFormattedNumber || '')) {
       this.phoneNumber = asYouType.input(this.phoneNumber.toString())
     }
-    this.previousFormattedNumber = this.phoneNumber.toString()
+    this._previousFormattedNumber = this.phoneNumber.toString()
   }
 }

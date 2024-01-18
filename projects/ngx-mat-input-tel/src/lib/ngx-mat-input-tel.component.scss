@@ -11,10 +11,6 @@ $color-black: #000;
     }
   }
 
-  .country-selector-code {
-    color: var(--ngxMatInputTel-color, $color-black);
-  }
-
   .ngx-mat-input-tel-container {
     display: flex;
     height: var(--ngxMatInputTel-height, 24px);
@@ -27,7 +23,8 @@ $color-black: #000;
     font: inherit;
     width: 100%;
     box-sizing: border-box;
-    padding: 0 6px 0 90px;
+    padding-right: 6px;
+    padding-left: 4px;
     position: relative;
     z-index: 0;
     margin: {
@@ -51,6 +48,10 @@ $color-black: #000;
     width: 24px;
   }
 
+  .mdc-button__label {
+    margin-right: auto;
+  }
+
   .icon-wrapper,
   .label-wrapper {
     display: table-cell;
@@ -58,20 +59,16 @@ $color-black: #000;
   }
 
   .country-selector {
+    display: flex;
+    align-items: center;
     border-radius: 0;
     color: var(--ngxMatInputTel-color, ($color-black, 0.87));
     flex-shrink: 0;
     height: initial;
     line-height: unset;
-    width: 90px;
     padding: 1px;
     opacity: var(--ngxMatInputTel-opacity, 0);
     transition: opacity 200ms;
-    position: absolute;
-    top: 0;
-    bottom: 0;
-    right: auto;
-    left: 0;
     font: {
       size: inherit;
       weight: inherit;
@@ -86,6 +83,11 @@ $color-black: #000;
     &:disabled {
       color: rgba($color-black, 0.38);
     }
+  }
+
+  .country-selector-code {
+    color: var(--ngxMatInputTel-color, $color-black);
+    padding-right: 18px;
   }
 
   .country-selector-flag {
