@@ -1,6 +1,10 @@
 $color-black: #000;
 
 :host {
+  @media print {
+    --ngxMatInputTel-flag-display: none;
+  }
+
   &.ngx-floating .country-selector {
     opacity: 1;
   }
@@ -79,14 +83,8 @@ $color-black: #000;
   }
 
   .country-selector-flag {
-    display: inline-block;
+    display: var(--ngxMatInputTel-flag-display, inline-block);
     margin-right: 0.5ex;
-  }
-
-  @media print {
-    .country-selector-flag {
-      display: none;
-    }
   }
 
   .country-list-button {
