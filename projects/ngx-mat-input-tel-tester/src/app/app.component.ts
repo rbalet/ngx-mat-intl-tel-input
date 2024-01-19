@@ -5,47 +5,47 @@ import { MatButtonModule } from '@angular/material/button'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
+import { BrowserModule } from '@angular/platform-browser'
 import { NgxMatInputTelComponent } from '../../../ngx-mat-input-tel/src/lib/ngx-mat-input-tel.component'
 
 interface PhoneForm {
-  name: FormControl<string | null>
-  surname: FormControl<string | null>
   phone: FormControl<string | null>
 }
 
 interface ProfileForm {
-  firstName: FormControl<string | null>
-  lastName: FormControl<string | null>
   phone: FormControl<string | null>
 }
 
 @Component({
+  standalone: true,
   selector: 'app-root',
   templateUrl: './app.component.html',
   styleUrls: ['./app.component.scss'],
-  standalone: true,
   imports: [
+    BrowserModule,
     CommonModule,
+
+    // Forms
     ReactiveFormsModule,
     MatFormFieldModule,
     MatInputModule,
+
+    // Components
+    NgxMatInputTelComponent,
+
+    // Mat
     MatButtonModule,
     MatDividerModule,
-    NgxMatInputTelComponent,
   ],
 })
 export class AppComponent implements AfterViewInit {
   @ViewChild(NgxMatInputTelComponent) phoneInput: NgxMatInputTelComponent | undefined
 
   phoneForm = new FormGroup<PhoneForm>({
-    name: new FormControl(null, [Validators.required]),
-    surname: new FormControl(null, [Validators.required]),
     phone: new FormControl(null, [Validators.required]),
   })
 
   profileForm = new FormGroup<ProfileForm>({
-    firstName: new FormControl(null),
-    lastName: new FormControl(null),
     phone: new FormControl(null),
   })
 

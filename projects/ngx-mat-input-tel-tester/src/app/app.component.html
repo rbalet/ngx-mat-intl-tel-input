@@ -1,19 +1,8 @@
 <div style="margin: 50px">
   <h3 id="phoneInput">Test International Telephone Input Form</h3>
   <br />
+
   <form #f="ngForm" [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
-    <mat-form-field>
-      <mat-label>Name</mat-label>
-      <input matInput placeholder="Name" [formControl]="phoneForm.controls.name" />
-      <mat-error *ngIf="phoneForm.controls.name.errors?.required"> Required Field </mat-error>
-    </mat-form-field>
-
-    <mat-form-field>
-      <mat-label>Surname</mat-label>
-      <input matInput placeholder="surname" [formControl]="phoneForm.controls.surname" />
-      <mat-error *ngIf="phoneForm.controls.surname.errors?.required"> Required Field </mat-error>
-    </mat-form-field>
-
     <mat-form-field style="width: 50%">
       <ngx-mat-input-tel
         [cssClass]="'custom'"
@@ -64,14 +53,6 @@
   <mat-divider></mat-divider>
 
   <form #f1="ngForm" [formGroup]="profileForm">
-    <mat-form-field>
-      <mat-label> First Name:</mat-label>
-      <input matInput type="text" [formControl]="profileForm.controls.firstName" />
-    </mat-form-field>
-    <mat-form-field>
-      <mat-label> Last Name: </mat-label>
-      <input matInput type="text" [formControl]="profileForm.controls.lastName" />
-    </mat-form-field>
     <mat-form-field style="width: 50%">
       <ngx-mat-input-tel
         [cssClass]="'custom'"

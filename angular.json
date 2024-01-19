@@ -107,25 +107,18 @@
         "serve": {
           "builder": "@angular-devkit/build-angular:dev-server",
           "options": {
-            "browserTarget": "ngx-mat-input-tel-tester:build"
+            "buildTarget": "ngx-mat-input-tel-tester:build"
           },
           "configurations": {
             "production": {
-              "browserTarget": "ngx-mat-input-tel-tester:build:production"
+              "buildTarget": "ngx-mat-input-tel-tester:build:production"
             }
-          }
-        },
-        "extract-i18n": {
-          "builder": "@angular-devkit/build-angular:extract-i18n",
-          "options": {
-            "browserTarget": "ngx-mat-input-tel-tester:build"
           }
         },
         "test": {
           "builder": "@angular-devkit/build-angular:karma",
           "options": {
             "main": "projects/ngx-mat-input-tel-tester/src/test.ts",
-            "polyfills": "projects/ngx-mat-input-tel-tester/src/polyfills.ts",
             "tsConfig": "projects/ngx-mat-input-tel-tester/tsconfig.spec.json",
             "karmaConfig": "projects/ngx-mat-input-tel-tester/karma.conf.js",
             "assets": [
