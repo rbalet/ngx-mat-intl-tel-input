@@ -61,6 +61,7 @@ $color-black: #000;
     padding: 1px;
     opacity: var(--ngxMatInputTel-opacity, 0);
     transition: opacity 200ms;
+    border: unset;
     font: {
       size: inherit;
       weight: inherit;
