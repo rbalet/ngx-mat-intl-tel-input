@@ -1,1 +1,13 @@
-/* You can add global styles to this file, and also import other style files */
+@use '@angular/material' as mat;
+@import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
+
+@font-face {
+  font-family: 'Roboto';
+  font-weight: 1 999;
+  src: url('/assets/fonts/muli.ttf') format('truetype-variations');
+  font-display: fallback;
+}
+
+body {
+  font-family: 'Roboto', sans-serif;
+}
