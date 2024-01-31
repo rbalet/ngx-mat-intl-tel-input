@@ -1,4 +1,21 @@
 @use '@angular/material' as mat;
+$my-palette: mat.$indigo-palette;
+
+$my-primary: mat.define-palette(mat.$indigo-palette, 500);
+$my-accent: mat.define-palette(mat.$pink-palette, A200, A100, A400);
+
+$my-theme: mat.define-light-theme(
+  (
+    color: (
+      primary: $my-primary,
+      accent: $my-accent,
+    ),
+    density: 0,
+  )
+);
+
+@include mat.all-component-themes($my-theme);
+
 @import url(http://fonts.googleapis.com/css?family=Roboto:400,100,100italic,300,300ita‌​lic,400italic,500,500italic,700,700italic,900italic,900);
 
 @font-face {
