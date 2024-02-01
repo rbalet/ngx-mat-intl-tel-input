@@ -49,7 +49,7 @@
       </div>
       <div class="label-wrapper">
         {{ country.name }}
-        <span *ngIf="country?.dialCode"
+        <span [style]="!searchCriteria ? 'white-space: nowrap' : ''" *ngIf="country?.dialCode"
           >+{{ country.dialCode }}
           <ng-container *ngIf="country.areaCodes">
             {{ country.areaCodes.join(', ') }}
@@ -57,23 +57,27 @@
         </span>
       </div>
     </button>
+
     <mat-divider *ngIf="preferredCountriesInDropDown?.length"></mat-divider>
-    <ng-container *ngFor="let country of allCountries">
+
+    <ng-container *ngFor="let country of allCountries | search : searchCriteria">
       <button
         type="button"
         mat-menu-item
         class="country-list-button"
-        *ngIf="country | search : searchCriteria"
         (click)="onCountrySelect(country, focusable)"
       >
         <div class="icon-wrapper">
           <div class="flag" [ngClass]="country.flagClass"></div>
         </div>
         <div class="label-wrapper">
-          {{ country.name }} +{{ country.dialCode }}
-          <ng-container *ngIf="country.areaCodes">
-            {{ country.areaCodes.join(', ') }}
-          </ng-container>
+          {{ country.name }}
+          <span [style]="!searchCriteria ? 'white-space: nowrap' : ''" *ngIf="country?.dialCode"
+            >+{{ country.dialCode }}
+            <ng-container *ngIf="country.areaCodes">
+              {{ country.areaCodes.join(', ') }}
+            </ng-container>
+          </span>
         </div>
       </button>
     </ng-container>

@@ -7,16 +7,17 @@ import { Country } from '../lib/model/country.model'
   standalone: true,
 })
 export class SearchPipe implements PipeTransform {
-  // country | search:'searchCriteria'
-  transform(country: Country, searchCriteria?: string): boolean {
+  transform(countries: Country[], searchCriteria?: string): Country[] {
     if (!searchCriteria || searchCriteria === '') {
-      return true
+      return countries
     }
 
-    return `${country.name}+${country.dialCode}${
-      country.areaCodes ? country.areaCodes.join(',') : ''
-    }`
-      .toLowerCase()
-      .includes(searchCriteria.toLowerCase())
+    return countries.filter((country) => {
+      return `${country.name}+${country.dialCode}${
+        country.areaCodes ? country.areaCodes.join(',') : ''
+      }`
+        .toLowerCase()
+        .includes(searchCriteria.toLowerCase())
+    })
   }
 }

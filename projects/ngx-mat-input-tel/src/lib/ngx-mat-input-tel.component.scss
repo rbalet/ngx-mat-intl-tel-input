@@ -44,10 +44,8 @@ $color-black: #000;
     margin-right: auto;
   }
 
-  .icon-wrapper,
-  .label-wrapper {
-    display: table-cell;
-    vertical-align: middle;
+  .dialCode-text {
+    white-space: nowrap;
   }
 
   .country-selector {
