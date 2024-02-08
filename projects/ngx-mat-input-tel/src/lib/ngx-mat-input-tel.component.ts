@@ -110,6 +110,10 @@ export class NgxMatInputTelComponent
 
   @HostBinding()
   id = `ngx-mat-input-tel-${NgxMatInputTelComponent.nextId++}`
+  @HostBinding('class.ngx-floating')
+  get shouldLabelFloat(): boolean {
+    return this.focused || !this.empty
+  }
 
   @Input() preferredCountries: string[] = []
   @Input() enablePlaceholder = true
@@ -122,14 +126,44 @@ export class NgxMatInputTelComponent
   @Input() searchPlaceholder?: string
   @Input() autocomplete: 'off' | 'tel' = 'off'
   @Input()
-  get format(): PhoneNumberFormat {
-    return this._format
-  }
-
   set format(value: PhoneNumberFormat) {
     this._format = value
     this.phoneNumber = this.formattedPhoneNumber
     this.stateChanges.next()
+  }
+  get format(): PhoneNumberFormat {
+    return this._format
+  }
+
+  @Input()
+  set placeholder(value: string) {
+    this._placeholder = value
+    this.stateChanges.next(undefined)
+  }
+  get placeholder(): string {
+    return this._placeholder || ''
+  }
+
+  @Input({ alias: 'required', transform: booleanAttribute })
+  set required(value: boolean) {
+    this._required = coerceBooleanProperty(value)
+    this.stateChanges.next(undefined)
+  }
+  get required(): boolean {
+    return this._required
+  }
+
+  @Input({ alias: 'disabled', transform: booleanAttribute })
+  set disabled(value: boolean) {
+    this._disabled = coerceBooleanProperty(value)
+    this.stateChanges.next(undefined)
+  }
+  get disabled(): boolean {
+    return this._disabled
+  }
+
+  get empty(): boolean {
+    return !this.phoneNumber
   }
 
   @Output()
@@ -378,50 +412,12 @@ export class NgxMatInputTelComponent
     this.stateChanges.next(undefined)
   }
 
-  get empty(): boolean {
-    return !this.phoneNumber
-  }
-
-  @HostBinding('class.ngx-floating')
-  get shouldLabelFloat(): boolean {
-    return this.focused || !this.empty
-  }
-
-  @Input()
-  set placeholder(value: string) {
-    this._placeholder = value
-    this.stateChanges.next(undefined)
-  }
-  get placeholder(): string {
-    return this._placeholder || ''
-  }
-
-  @Input({ alias: 'required', transform: booleanAttribute })
-  set required(value: boolean) {
-    console.log('required', value)
-    this._required = coerceBooleanProperty(value)
-    this.stateChanges.next(undefined)
-  }
-  get required(): boolean {
-    return this._required
-  }
-
-  @Input()
-  set disabled(value: boolean) {
-    this._disabled = coerceBooleanProperty(value)
-    this.stateChanges.next(undefined)
-  }
-  get disabled(): boolean {
-    return this._disabled
-  }
-
   setDescribedByIds(ids: string[]) {
     this.describedBy = ids.join(' ')
   }
 
   onContainerClick(event: MouseEvent): void {
     if ((event.target as Element).tagName.toLowerCase() !== 'input') {
-      // tslint:disable-next-line:no-non-null-assertion
       this._elementRef.nativeElement.querySelector('input')!.focus()
     }
   }

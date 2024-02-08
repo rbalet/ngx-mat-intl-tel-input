@@ -9,7 +9,7 @@
         [preferredCountries]="['us', 'ca']"
         [enablePlaceholder]="true"
         [enableSearch]="true"
-        [required]="true"
+        required
         [formControl]="phoneForm.controls.phone"
         placeholder="Enter Number"
         describedBy="phoneInput"
@@ -63,7 +63,6 @@
         [searchPlaceholder]="'Buscar...'"
         [formControl]="profileForm.controls.phone"
         placeholder="Enter Number"
-        required
         #phone1
       ></ngx-mat-input-tel>
       <mat-hint>e.g. {{ phone1.selectedCountry.placeHolder }}</mat-hint>
