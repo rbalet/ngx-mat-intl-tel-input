@@ -115,16 +115,17 @@ export class NgxMatInputTelComponent
     return this.focused || !this.empty
   }
 
-  @Input() preferredCountries: string[] = []
-  @Input() enablePlaceholder = true
-  @Input() inputPlaceholder: string = ''
+  @Input() autocomplete: 'off' | 'tel' = 'off'
   @Input() cssClass?: string
+  @Input() enablePlaceholder = true
+  @Input() enableSearch = false
+  @Input() errorStateMatcher: ErrorStateMatcher = this._defaultErrorStateMatcher
+  @Input() inputPlaceholder: string = ''
   @Input() name?: string
   @Input() onlyCountries: string[] = []
-  @Input() errorStateMatcher: ErrorStateMatcher = this._defaultErrorStateMatcher
-  @Input() enableSearch = false
-  @Input() searchPlaceholder?: string
-  @Input() autocomplete: 'off' | 'tel' = 'off'
+  @Input() preferredCountries: string[] = []
+  @Input() resetOnChange = false
+  @Input() searchPlaceholder = 'Search ...'
   @Input()
   set format(value: PhoneNumberFormat) {
     this._format = value
@@ -226,10 +227,6 @@ export class NgxMatInputTelComponent
   }
 
   ngOnInit() {
-    if (!this.searchPlaceholder) {
-      this.searchPlaceholder = 'Search ...'
-    }
-
     if (this.preferredCountries.length) {
       this.preferredCountries.forEach((iso2) => {
         const preferredCountry = this.allCountries
@@ -314,8 +311,13 @@ export class NgxMatInputTelComponent
     if (this.phoneNumber) {
       this.phoneNumber = this.numberInstance?.nationalNumber
     }
+    if (this.resetOnChange && this.selectedCountry !== country) {
+      this.reset()
+    }
+
     this.selectedCountry = country
     this.countryChanged.emit(this.selectedCountry)
+
     this.onPhoneNumberChange()
     el.focus()
   }
