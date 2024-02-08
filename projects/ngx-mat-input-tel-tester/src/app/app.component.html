@@ -63,6 +63,7 @@
         [searchPlaceholder]="'Buscar...'"
         [formControl]="profileForm.controls.phone"
         placeholder="Enter Number"
+        required
         #phone1
       ></ngx-mat-input-tel>
       <mat-hint>e.g. {{ phone1.selectedCountry.placeHolder }}</mat-hint>

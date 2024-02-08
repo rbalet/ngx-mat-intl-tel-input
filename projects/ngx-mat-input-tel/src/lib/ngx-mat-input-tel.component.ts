@@ -16,6 +16,7 @@ import {
   Output,
   Self,
   ViewChild,
+  booleanAttribute,
 } from '@angular/core'
 import {
   FormGroupDirective,
@@ -387,33 +388,31 @@ export class NgxMatInputTelComponent
   }
 
   @Input()
-  get placeholder(): string {
-    return this._placeholder || ''
-  }
-
   set placeholder(value: string) {
     this._placeholder = value
     this.stateChanges.next(undefined)
   }
+  get placeholder(): string {
+    return this._placeholder || ''
+  }
 
-  @Input()
+  @Input({ alias: 'required', transform: booleanAttribute })
+  set required(value: boolean) {
+    console.log('required', value)
+    this._required = coerceBooleanProperty(value)
+    this.stateChanges.next(undefined)
+  }
   get required(): boolean {
     return this._required
   }
 
-  set required(value: boolean) {
-    this._required = coerceBooleanProperty(value)
-    this.stateChanges.next(undefined)
-  }
-
   @Input()
-  get disabled(): boolean {
-    return this._disabled
-  }
-
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value)
     this.stateChanges.next(undefined)
+  }
+  get disabled(): boolean {
+    return this._disabled
   }
 
   setDescribedByIds(ids: string[]) {
