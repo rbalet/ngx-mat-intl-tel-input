@@ -4,19 +4,12 @@
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
-    "build": "ng build",
+    "build": "ng build ngx-mat-input-tel --configuration production",
     "test": "ng test",
-    "test:cli": "ng test ",
-    "test-headless": "ng test --watch=false --browsers=ChromeHeadless",
+    "test:ci": "ng test ngx-mat-input-tel --watch=false --code-coverage --no-progress --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "ng build ngx-mat-input-tel --configuration production && npm publish ./dist/ngx-mat-input-tel",
-    "build_lib": "ng build ngx-mat-input-tel",
-    "npm_pack": "cd dist/ngx-mat-input-tel && npm pack",
-    "package": "npm run build_lib && npm run copy-files && npm run npm_pack",
-    "copy-license": "cp ./LICENSE ./dist/ngx-mat-input-tel",
-    "copy-readme": "cp ./README.md ./dist/ngx-mat-input-tel",
-    "copy-files": "npm run copy-license && npm run copy-readme"
+    "publish": "ng build ngx-mat-input-tel --configuration production && npm publish ./dist/ngx-mat-input-tel"
   },
   "private": true,
   "dependencies": {
@@ -46,6 +39,7 @@
     "@angular/cli": "^17.1.2",
     "@angular/compiler-cli": "^17.1.2",
     "@angular/language-service": "^17.1.2",
+    "@semantic-release/apm-config": "^9.0.1",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
     "@types/node": "^20.11.16",
@@ -66,7 +60,11 @@
     "karma-jasmine-html-reporter": "^2.1.0",
     "ng-packagr": "^17.1.2",
     "protractor": "~7.0.0",
+    "semantic-release": "^23.0.2",
     "ts-node": "^10.9.2",
     "typescript": "~5.3.3"
+  },
+  "release": {
+    "extends": "@semantic-release/apm-config"
   }
 }

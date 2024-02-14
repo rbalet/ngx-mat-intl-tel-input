@@ -119,13 +119,6 @@ If you want to show the sample number for the country selected or errors , use m
 - Update README.md
 - Pull request.
 
-### Helpful commands
-
-- Build lib: `$ npm run build_lib`
-- Copy license and readme files: `$ npm run copy-files`
-- Create package: `$ npm run npm_pack`
-- Build lib and create package: `$ npm run package`
-
 ### Use locally
 
 After building and creating package, you can use it locally too.
