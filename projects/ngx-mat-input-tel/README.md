@@ -1,7 +1,10 @@
 # International Telephone Input for Angular Material (ngxMatInputTel)
 An Angular Material package for entering and validating international telephone numbers. It adds a flag dropdown to any input, detects the user's country, displays a relevant placeholder and provides formatting/validation methods.
 
-[![npm version](https://img.shields.io/npm/v/ngx-mat-input-tel.svg)](https://www.npmjs.com/package/ngx-mat-input-tel) ![NPM](https://img.shields.io/npm/l/ngx-mat-input-tel) ![npm bundle size](https://img.shields.io/bundlephobia/min/ngx-mat-input-tel)
+[![npm version](https://img.shields.io/npm/v/ngx-mat-input-tel.svg)](https://www.npmjs.com/package/ngx-mat-input-tel)
+![NPM](https://img.shields.io/npm/l/ngx-mat-input-tel)
+![npm bundle size](https://img.shields.io/bundlephobia/min/ngx-mat-input-tel)
+![npm](https://img.shields.io/npm/dm/ngx-mat-input-tel)
 
 ## Demo
 - https://stackblitz.com/~/github.com/rbalet/ngx-mat-input-tel
@@ -94,15 +97,16 @@ If you want to show the sample number for the country selected or errors , use m
 
 ## Options
 
-| Options            | Type       | Default     | Description                                                                         |
-| ------------------ | ---------- | ----------- | ----------------------------------------------------------------------------------- |
-| preferredCountries | `string[]` | `[]`        | List of country abbreviations, which will appear at the top.                        |
-| onlyCountries      | `string[]` | `[]`        | List of manually selected country abbreviations, which will appear in the dropdown. |
-| inputPlaceholder   | `string`   | `undefined` | Placeholder for the input component.                                                |
-| enablePlaceholder  | `boolean`  | `true`      | Input placeholder text, which adapts to the country selected.                       |
-| enableSearch       | `boolean`  | `false`     | Whether to display a search bar to help filter down the list of countries           |
-| format             | `string`   | `default`   | Format of "as you type" input. Possible values: national, international, default    |
-| describedBy        | `string`   | `undefined` | Use aria-described by with the input field                                          |
+| Options            | Type       | Default      | Description                                                                         |
+| ------------------ | ---------- | ------------ | ----------------------------------------------------------------------------------- |
+| enablePlaceholder  | `boolean`  | `true`       | Input placeholder text, which adapts to the country selected.                       |
+| enableSearch       | `boolean`  | `false`      | Whether to display a search bar to help filter down the list of countries           |
+| format             | `string`   | `default`    | Format of "as you type" input. Possible values: national, international, default    |
+| inputPlaceholder   | `string`   | `undefined`  | Placeholder for the input component.                                                |
+| onlyCountries      | `string[]` | `[]`         | List of manually selected country abbreviations, which will appear in the dropdown. |
+| preferredCountries | `string[]` | `[]`         | List of country abbreviations, which will appear at the top.                        |
+| resetOnChange      | `boolean`  | `false`      | Reset input on country change                                                       |
+| searchPlaceholder  | `string`   | `Search ...` | Placeholder for the search input                                                    |
 
 ## Css variable
 | Name                            | Default        | Explanation                                         |
@@ -118,6 +122,13 @@ If you want to show the sample number for the country selected or errors , use m
 - Update `./src/lib` with new functionality.
 - Update README.md
 - Pull request.
+
+### Helpful commands
+
+- Build lib: `$ npm run build_lib`
+- Copy license and readme files: `$ npm run copy-files`
+- Create package: `$ npm run npm_pack`
+- Build lib and create package: `$ npm run package`
 
 ### Use locally
 

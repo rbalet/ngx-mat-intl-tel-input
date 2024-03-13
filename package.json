@@ -9,7 +9,8 @@
     "test:ci": "ng test ngx-mat-input-tel --watch=false --code-coverage --no-progress --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "ng build ngx-mat-input-tel --configuration production && npm publish ./dist/ngx-mat-input-tel"
+    "publish": "ng build ngx-mat-input-tel --configuration production && npm publish ./dist/ngx-mat-input-tel",
+    "prepare": "husky"
   },
   "private": true,
   "dependencies": {
@@ -39,6 +40,8 @@
     "@angular/cli": "^17.1.2",
     "@angular/compiler-cli": "^17.1.2",
     "@angular/language-service": "^17.1.2",
+    "@commitlint/cli": "^19.1.0",
+    "@commitlint/config-conventional": "^19.1.0",
     "@semantic-release/apm-config": "^9.0.1",
     "@types/jasmine": "~5.1.4",
     "@types/jasminewd2": "~2.0.13",
@@ -51,6 +54,7 @@
     "eslint-plugin-import": "^2.29.1",
     "eslint-plugin-jsdoc": "^48.0.6",
     "eslint-plugin-prefer-arrow": "^1.2.3",
+    "husky": "^9.0.11",
     "jasmine-core": "^5.1.1",
     "jasmine-spec-reporter": "~7.0.0",
     "karma": "^6.4.2",
