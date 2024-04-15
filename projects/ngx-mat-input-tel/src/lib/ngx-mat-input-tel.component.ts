@@ -261,13 +261,17 @@ export class NgxMatInputTelComponent
 
   ngDoCheck(): void {
     if (this.ngControl) {
-      const isInvalide = this.errorStateMatcher.isErrorState(
-        this.ngControl.control,
-        this._parentForm,
-      )
+      const oldState = this.errorState
+      const newState = this.errorStateMatcher.isErrorState(this.ngControl.control, this._parentForm)
 
       this.errorState =
-        (isInvalide && !this.ngControl.control?.value) || (!this.focused ? isInvalide : false)
+        (newState && (!this.ngControl.control?.value || this.ngControl.control?.touched)) ||
+        (!this.focused ? newState : false)
+
+      if (oldState !== newState) {
+        this.errorState = newState
+        this.stateChanges.next()
+      }
     }
   }
 
