@@ -117,14 +117,14 @@ export class NgxMatInputTelComponent
 
   @Input() autocomplete: 'off' | 'tel' = 'off'
   @Input() cssClass?: string
-  @Input() enablePlaceholder = true
-  @Input() enableSearch = false
+  @Input({ transform: booleanAttribute }) enablePlaceholder = true
+  @Input({ transform: booleanAttribute }) enableSearch = false
   @Input() errorStateMatcher: ErrorStateMatcher = this._defaultErrorStateMatcher
   @Input() inputPlaceholder: string = ''
   @Input() name?: string
   @Input() onlyCountries: string[] = []
   @Input() preferredCountries: string[] = []
-  @Input() resetOnChange = false
+  @Input({ transform: booleanAttribute }) resetOnChange = false
   @Input() searchPlaceholder = 'Search ...'
   @Input()
   set format(value: PhoneNumberFormat) {
@@ -145,7 +145,7 @@ export class NgxMatInputTelComponent
     return this._placeholder || ''
   }
 
-  @Input({ alias: 'required', transform: booleanAttribute })
+  @Input({ transform: booleanAttribute })
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value)
     this.stateChanges.next(undefined)

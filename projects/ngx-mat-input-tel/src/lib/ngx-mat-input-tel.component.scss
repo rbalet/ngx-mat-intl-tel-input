@@ -60,6 +60,7 @@ $color-black: #000;
     opacity: var(--ngxMatInputTel-opacity, 0);
     transition: opacity 200ms;
     border: unset;
+    background-color: transparent;
     font: {
       size: inherit;
       weight: inherit;

@@ -3,12 +3,12 @@
   <br />
 
   <form #f="ngForm" [formGroup]="phoneForm" (ngSubmit)="onSubmit()">
-    <mat-form-field style="width: 50%">
+    <mat-form-field>
       <ngx-mat-input-tel
         [cssClass]="'custom'"
         [preferredCountries]="['us', 'ca']"
-        [enablePlaceholder]="true"
-        [enableSearch]="true"
+        enablePlaceholder
+        enableSearch
         required
         [formControl]="phoneForm.controls.phone"
         placeholder="Enter Number"
@@ -22,8 +22,10 @@
       </mat-error>
     </mat-form-field>
 
-    <button mat-button>Submit</button>
-    <button type="reset" mat-button (click)="onReset()">Reset</button>
+    <div class="buttons-container">
+      <button mat-stroked-button>Submit</button>
+      <button type="reset" mat-stroked-button (click)="onReset()">Reset</button>
+    </div>
   </form>
 
   <br />
@@ -53,19 +55,22 @@
   <mat-divider></mat-divider>
 
   <form #f1="ngForm" [formGroup]="profileForm" class="second-form">
-    <mat-form-field style="width: 50%">
+    <h2>Required & PlaceHolder</h2>
+    <mat-form-field floatLabel="always">
       <ngx-mat-input-tel
         [cssClass]="'custom'"
         [preferredCountries]="['cl', 've']"
-        [enablePlaceholder]="true"
-        [enableSearch]="true"
         [onlyCountries]="['us', 'cl', 've']"
         [searchPlaceholder]="'Buscar...'"
         [formControl]="profileForm.controls.phone"
-        [resetOnChange]="true"
+        resetOnChange
         placeholder="Enter Number"
+        enablePlaceholder
+        enableSearch
+        required
         #phone1
       ></ngx-mat-input-tel>
+      <mat-label>Phone</mat-label>
       <mat-hint>e.g. {{ phone1.selectedCountry.placeHolder }}</mat-hint>
       <mat-error *ngIf="profileForm.controls.phone.errors?.required"> Required Field </mat-error>
       <mat-error *ngIf="profileForm.controls.phone.errors?.validatePhoneNumber">
