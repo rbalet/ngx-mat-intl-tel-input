@@ -95,7 +95,7 @@ If you want to show the sample number for the country selected or errors , use m
 </form>
 ```
 
-## Options
+## Inputs
 
 | Options            | Type       | Default      | Description                                                                         |
 | ------------------ | ---------- | ------------ | ----------------------------------------------------------------------------------- |
@@ -107,6 +107,12 @@ If you want to show the sample number for the country selected or errors , use m
 | preferredCountries | `string[]` | `[]`         | List of country abbreviations, which will appear at the top.                        |
 | resetOnChange      | `boolean`  | `false`      | Reset input on country change                                                       |
 | searchPlaceholder  | `string`   | `Search ...` | Placeholder for the search input                                                    |
+
+
+## Outputs
+| Options        | Type                    | Default     | Description       |
+| -------------- | ----------------------- | ----------- | ----------------- |
+| countryChanged | `EventEmitter<Country>` | `undefined` | On country change |
 
 ## Css variable
 | Name                            | Default        | Explanation                                         |

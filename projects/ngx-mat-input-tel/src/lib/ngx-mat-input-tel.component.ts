@@ -136,6 +136,7 @@ export class NgxMatInputTelComponent
     return this._format
   }
 
+  private _placeholder?: string
   @Input()
   set placeholder(value: string) {
     this._placeholder = value
@@ -145,6 +146,7 @@ export class NgxMatInputTelComponent
     return this._placeholder || ''
   }
 
+  private _required = false
   @Input({ transform: booleanAttribute })
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value)
@@ -154,6 +156,7 @@ export class NgxMatInputTelComponent
     return this._required
   }
 
+  private _disabled = false
   @Input({ alias: 'disabled', transform: booleanAttribute })
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value)
@@ -170,9 +173,6 @@ export class NgxMatInputTelComponent
   @Output()
   countryChanged: EventEmitter<Country> = new EventEmitter<Country>()
 
-  private _placeholder?: string
-  private _required = false
-  private _disabled = false
   stateChanges = new Subject<void>()
   focused = false
   describedBy = ''

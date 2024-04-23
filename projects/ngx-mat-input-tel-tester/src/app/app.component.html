@@ -9,10 +9,10 @@
         [preferredCountries]="['us', 'ca']"
         enablePlaceholder
         enableSearch
-        required
         [formControl]="phoneForm.controls.phone"
         placeholder="Enter Number"
         describedBy="phoneInput"
+        required
         #phone
       ></ngx-mat-input-tel>
       <mat-hint>e.g. {{ phone.selectedCountry.placeHolder }}</mat-hint>
@@ -67,7 +67,6 @@
         placeholder="Enter Number"
         enablePlaceholder
         enableSearch
-        required
         #phone1
       ></ngx-mat-input-tel>
       <mat-label>Phone</mat-label>
