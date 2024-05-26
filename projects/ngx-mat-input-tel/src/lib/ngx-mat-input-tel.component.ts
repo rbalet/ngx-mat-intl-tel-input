@@ -176,7 +176,7 @@ export class NgxMatInputTelComponent
   stateChanges = new Subject<void>()
   focused = false
   describedBy = ''
-  phoneNumber?: E164Number | NationalNumber = ''
+  phoneNumber?: E164Number | NationalNumber = '' as E164Number | NationalNumber
   allCountries: Country[] = []
   preferredCountriesInDropDown: Country[] = []
   selectedCountry!: Country
@@ -429,24 +429,24 @@ export class NgxMatInputTelComponent
   }
 
   reset() {
-    this.phoneNumber = ''
+    this.phoneNumber = '' as E164Number | NationalNumber
     this.propagateChange(null)
 
     this._changeDetectorRef.markForCheck()
     this.stateChanges.next(undefined)
   }
 
-  private get formattedPhoneNumber(): string {
+  private get formattedPhoneNumber(): E164Number | NationalNumber {
     if (!this.numberInstance) {
-      return this.phoneNumber?.toString() || ''
+      return (this.phoneNumber?.toString() || '') as E164Number | NationalNumber
     }
     switch (this.format) {
       case 'national':
-        return this.numberInstance.formatNational()
+        return this.numberInstance.formatNational() as E164Number | NationalNumber
       case 'international':
-        return this.numberInstance.formatInternational()
+        return this.numberInstance.formatInternational() as E164Number | NationalNumber
       default:
-        return this.numberInstance.nationalNumber.toString()
+        return this.numberInstance.nationalNumber.toString() as E164Number | NationalNumber
     }
   }
 
@@ -459,7 +459,7 @@ export class NgxMatInputTelComponent
     if (!this.phoneNumber) return
 
     if (this.phoneNumber?.toString().startsWith(this._previousFormattedNumber || '')) {
-      this.phoneNumber = asYouType.input(this.phoneNumber.toString())
+      this.phoneNumber = asYouType.input(this.phoneNumber.toString()) as E164Number | NationalNumber
     }
     this._previousFormattedNumber = this.phoneNumber.toString()
   }
