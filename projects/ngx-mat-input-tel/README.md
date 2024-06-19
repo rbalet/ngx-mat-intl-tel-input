@@ -143,5 +143,8 @@ In your project run:
 
 `$ npm install --save {{path to your local '*.tgz' package file}}`
 
-### Acknowledgments
-This repo is a fork from the [ngx-mat-intl-tel-input](https://github.com/tanansatpal/ngx-mat-intl-tel-input) library.
+## Authors and acknowledgment
+* maintainer [Raphaël Balet](https://github.com/rbalet) 
+* Forked from [ngx-mat-intl-tel-input](https://github.com/tanansatpal/ngx-mat-intl-tel-input)
+
+[![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/widness)

@@ -281,32 +281,35 @@ export class NgxMatInputTelComponent
   }
 
   public onPhoneNumberChange(): void {
-    if (!this.phoneNumber) return
-
-    try {
-      this.numberInstance = parsePhoneNumberFromString(
-        this.phoneNumber.toString(),
-        this.selectedCountry.iso2.toUpperCase() as CC,
-      )
-      this.formatAsYouTypeIfEnabled()
-      this.value = this.numberInstance?.number
-      if (this.numberInstance && this.numberInstance.isValid()) {
-        if (this.phoneNumber !== this.formattedPhoneNumber) {
-          this.phoneNumber = this.formattedPhoneNumber
+    if (this.phoneNumber)
+      try {
+        this.numberInstance = parsePhoneNumberFromString(
+          this.phoneNumber.toString(),
+          this.selectedCountry.iso2.toUpperCase() as CC,
+        )
+        this.formatAsYouTypeIfEnabled()
+        this.value = this.numberInstance?.number
+        if (this.numberInstance && this.numberInstance.isValid()) {
+          if (this.phoneNumber !== this.formattedPhoneNumber) {
+            this.phoneNumber = this.formattedPhoneNumber
+          }
+          if (
+            this.selectedCountry.iso2 !== this.numberInstance.country &&
+            this.numberInstance.country
+          ) {
+            this.selectedCountry = this.getCountry(this.numberInstance.country)
+            this.countryChanged.emit(this.selectedCountry)
+          }
         }
-        if (
-          this.selectedCountry.iso2 !== this.numberInstance.country &&
-          this.numberInstance.country
-        ) {
-          this.selectedCountry = this.getCountry(this.numberInstance.country)
-          this.countryChanged.emit(this.selectedCountry)
-        }
+      } catch (e) {
+        // if no possible numbers are there,
+        // then the full number is passed so that validator could be triggered and proper error could be shown
+        this.value = this.phoneNumber.toString()
       }
-    } catch (e) {
-      // if no possible numbers are there,
-      // then the full number is passed so that validator could be triggered and proper error could be shown
-      this.value = this.phoneNumber.toString()
+    else {
+      this.value = null
     }
+
     this.propagateChange(this.value)
     this._changeDetectorRef.markForCheck()
   }
