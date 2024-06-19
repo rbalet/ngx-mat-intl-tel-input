@@ -28,13 +28,18 @@
       [placeholder]="searchPlaceholder"
       (click)="$event.stopPropagation()"
       style="
-        width: 100%;
+        width: calc(100% - 4px);
         height: 34px;
-        border: none;
-        border-bottom: 1px solid #ddd;
+        border-top: none;
+        border-right: none;
+        border-left: none;
+        border-image: initial;
+        border-bottom: 1px solid rgb(221, 221, 221);
         font-size: 14px;
-        padding: 20px 20px 24px;
+        padding: 20px 10px 24px;
         box-sizing: border-box;
+        background: transparent;
+        margin: 2px;
       "
     />
     <button
