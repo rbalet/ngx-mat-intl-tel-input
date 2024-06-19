@@ -95,7 +95,7 @@ If you want to show the sample number for the country selected or errors , use m
 </form>
 ```
 
-## Options
+## Inputs
 
 | Options            | Type       | Default      | Description                                                                         |
 | ------------------ | ---------- | ------------ | ----------------------------------------------------------------------------------- |
@@ -108,10 +108,15 @@ If you want to show the sample number for the country selected or errors , use m
 | resetOnChange      | `boolean`  | `false`      | Reset input on country change                                                       |
 | searchPlaceholder  | `string`   | `Search ...` | Placeholder for the search input                                                    |
 
+
+## Outputs
+| Options        | Type                    | Default     | Description       |
+| -------------- | ----------------------- | ----------- | ----------------- |
+| countryChanged | `EventEmitter<Country>` | `undefined` | On country change |
+
 ## Css variable
 | Name                            | Default        | Explanation                                         |
 | ------------------------------- | -------------- | --------------------------------------------------- |
-| `--ngxMatInputTel-color`        | `#000`         | If you wish to change the overall color             |
 | `--ngxMatInputTel-opacity`      | `0`            | If you wish the country flag to be shown by default |
 | `--ngxMatInputTel-flag-display` | `inline-block` | If you wish to hide the country flag                |
 

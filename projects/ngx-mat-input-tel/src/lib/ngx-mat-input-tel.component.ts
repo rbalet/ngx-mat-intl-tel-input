@@ -117,14 +117,14 @@ export class NgxMatInputTelComponent
 
   @Input() autocomplete: 'off' | 'tel' = 'off'
   @Input() cssClass?: string
-  @Input() enablePlaceholder = true
-  @Input() enableSearch = false
+  @Input({ transform: booleanAttribute }) enablePlaceholder = true
+  @Input({ transform: booleanAttribute }) enableSearch = false
   @Input() errorStateMatcher: ErrorStateMatcher = this._defaultErrorStateMatcher
   @Input() inputPlaceholder: string = ''
   @Input() name?: string
   @Input() onlyCountries: string[] = []
   @Input() preferredCountries: string[] = []
-  @Input() resetOnChange = false
+  @Input({ transform: booleanAttribute }) resetOnChange = false
   @Input() searchPlaceholder = 'Search ...'
   @Input()
   set format(value: PhoneNumberFormat) {
@@ -136,6 +136,7 @@ export class NgxMatInputTelComponent
     return this._format
   }
 
+  private _placeholder?: string
   @Input()
   set placeholder(value: string) {
     this._placeholder = value
@@ -145,7 +146,8 @@ export class NgxMatInputTelComponent
     return this._placeholder || ''
   }
 
-  @Input({ alias: 'required', transform: booleanAttribute })
+  private _required = false
+  @Input({ transform: booleanAttribute })
   set required(value: boolean) {
     this._required = coerceBooleanProperty(value)
     this.stateChanges.next(undefined)
@@ -154,6 +156,7 @@ export class NgxMatInputTelComponent
     return this._required
   }
 
+  private _disabled = false
   @Input({ alias: 'disabled', transform: booleanAttribute })
   set disabled(value: boolean) {
     this._disabled = coerceBooleanProperty(value)
@@ -170,13 +173,10 @@ export class NgxMatInputTelComponent
   @Output()
   countryChanged: EventEmitter<Country> = new EventEmitter<Country>()
 
-  private _placeholder?: string
-  private _required = false
-  private _disabled = false
   stateChanges = new Subject<void>()
   focused = false
   describedBy = ''
-  phoneNumber?: E164Number | NationalNumber = ''
+  phoneNumber?: E164Number | NationalNumber = '' as E164Number | NationalNumber
   allCountries: Country[] = []
   preferredCountriesInDropDown: Country[] = []
   selectedCountry!: Country
@@ -429,24 +429,24 @@ export class NgxMatInputTelComponent
   }
 
   reset() {
-    this.phoneNumber = ''
+    this.phoneNumber = '' as E164Number | NationalNumber
     this.propagateChange(null)
 
     this._changeDetectorRef.markForCheck()
     this.stateChanges.next(undefined)
   }
 
-  private get formattedPhoneNumber(): string {
+  private get formattedPhoneNumber(): E164Number | NationalNumber {
     if (!this.numberInstance) {
-      return this.phoneNumber?.toString() || ''
+      return (this.phoneNumber?.toString() || '') as E164Number | NationalNumber
     }
     switch (this.format) {
       case 'national':
-        return this.numberInstance.formatNational()
+        return this.numberInstance.formatNational() as E164Number | NationalNumber
       case 'international':
-        return this.numberInstance.formatInternational()
+        return this.numberInstance.formatInternational() as E164Number | NationalNumber
       default:
-        return this.numberInstance.nationalNumber.toString()
+        return this.numberInstance.nationalNumber.toString() as E164Number | NationalNumber
     }
   }
 
@@ -459,7 +459,7 @@ export class NgxMatInputTelComponent
     if (!this.phoneNumber) return
 
     if (this.phoneNumber?.toString().startsWith(this._previousFormattedNumber || '')) {
-      this.phoneNumber = asYouType.input(this.phoneNumber.toString())
+      this.phoneNumber = asYouType.input(this.phoneNumber.toString()) as E164Number | NationalNumber
     }
     this._previousFormattedNumber = this.phoneNumber.toString()
   }

@@ -6,6 +6,7 @@ import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldModule } from '@angular/material/form-field'
 import { MatInputModule } from '@angular/material/input'
 import { BrowserModule } from '@angular/platform-browser'
+import { BrowserAnimationsModule } from '@angular/platform-browser/animations'
 import { NgxMatInputTelComponent } from '../../../ngx-mat-input-tel/src/lib/ngx-mat-input-tel.component'
 
 interface PhoneForm {
@@ -24,6 +25,7 @@ interface ProfileForm {
   imports: [
     BrowserModule,
     CommonModule,
+    BrowserAnimationsModule,
 
     // Forms
     ReactiveFormsModule,
