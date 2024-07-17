@@ -103,6 +103,7 @@ If you want to show the sample number for the country selected or errors , use m
 | enableSearch       | `boolean`  | `false`      | Whether to display a search bar to help filter down the list of countries           |
 | format             | `string`   | `default`    | Format of "as you type" input. Possible values: national, international, default    |
 | inputPlaceholder   | `string`   | `undefined`  | Placeholder for the input component.                                                |
+| maxLength          | `number`   | `15`         | max length of the input.                                                            |
 | onlyCountries      | `string[]` | `[]`         | List of manually selected country abbreviations, which will appear in the dropdown. |
 | preferredCountries | `string[]` | `[]`         | List of country abbreviations, which will appear at the top.                        |
 | resetOnChange      | `boolean`  | `false`      | Reset input on country change                                                       |

@@ -44,7 +44,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(NgxMatInputTelComponent) phoneInput: NgxMatInputTelComponent | undefined
 
   phoneForm = new FormGroup<PhoneForm>({
-    phone: new FormControl(null, [Validators.required]),
+    phone: new FormControl(null, [Validators.required, Validators.maxLength(9)]),
   })
 
   profileForm = new FormGroup<ProfileForm>({
@@ -65,5 +65,9 @@ export class AppComponent implements AfterViewInit {
     if (this.phoneInput && this.phoneInput.matMenu) {
       this.phoneInput.matMenu.panelClass = 'custom-panel'
     }
+
+    this.phoneForm.valueChanges.subscribe((value) => {
+      console.log('phoneForm.valueChanges', value)
+    })
   }
 }
