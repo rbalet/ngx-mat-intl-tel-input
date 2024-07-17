@@ -3,8 +3,11 @@
     --ngxMatInputTel-flag-display: none;
   }
 
-  &.ngx-floating .country-selector {
-    opacity: 1;
+  &.ngx-floating {
+    .country-selector,
+    input.ngx-mat-input-tel-input::placeholder {
+      opacity: 1;
+    }
   }
 
   .ngx-mat-input-tel-container {
@@ -23,6 +26,12 @@
     padding-left: 4px;
     position: relative;
     z-index: 0;
+
+    &.ngx-mat-input-tel-input {
+      &::placeholder {
+        opacity: var(--ngxMatInputTel-placeholder-opacity, var(--ngxMatInputTel-opacity, 0));
+      }
+    }
   }
   .icon-wrapper {
     padding-right: 24px;
@@ -54,7 +63,7 @@
     height: initial;
     line-height: unset;
     padding: 1px;
-    opacity: var(--ngxMatInputTel-opacity, 0);
+    opacity: var(--ngxMatInputTel-selector-opacity, var(--ngxMatInputTel-opacity, 0));
     transition: opacity 200ms;
     border: unset;
     background-color: transparent;

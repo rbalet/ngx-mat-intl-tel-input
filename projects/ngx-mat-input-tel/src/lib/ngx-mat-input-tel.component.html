@@ -89,6 +89,7 @@
   </mat-menu>
 
   <input
+    class="ngx-mat-input-tel-input"
     matInput
     type="tel"
     inputmode="tel"
@@ -99,7 +100,7 @@
     [(ngModel)]="phoneNumber"
     (ngModelChange)="onPhoneNumberChange()"
     [errorStateMatcher]="errorStateMatcher"
-    [placeholder]="inputPlaceholder"
+    [placeholder]="placeholder || $any(selectedCountry.placeHolder)"
     [disabled]="disabled"
     #focusable
     [maxlength]="maxLength"

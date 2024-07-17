@@ -44,7 +44,7 @@ export class AppComponent implements AfterViewInit {
   @ViewChild(NgxMatInputTelComponent) phoneInput: NgxMatInputTelComponent | undefined
 
   phoneForm = new FormGroup<PhoneForm>({
-    phone: new FormControl(null, [Validators.required, Validators.maxLength(9)]),
+    phone: new FormControl(null, [Validators.required, Validators.maxLength(12)]),
   })
 
   profileForm = new FormGroup<ProfileForm>({
@@ -67,6 +67,12 @@ export class AppComponent implements AfterViewInit {
     }
 
     this.phoneForm.valueChanges.subscribe((value) => {
+      // Only emitting correct number
+      console.log('phoneForm.valueChanges', value)
+    })
+
+    this.profileForm.valueChanges.subscribe((value) => {
+      // Only emitting correct number
       console.log('phoneForm.valueChanges', value)
     })
   }
