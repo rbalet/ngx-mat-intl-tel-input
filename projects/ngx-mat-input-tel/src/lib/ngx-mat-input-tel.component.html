@@ -15,9 +15,8 @@
 
   <mat-menu
     #menu="matMenu"
-    class="ngx-mat-input-tel-mat-menu-panel"
-    backdropClass="ngx-mat-input-tel-overlay-backdrop"
-    overlayPanelClass="ngx-mat-input-tel-overlay-pane"
+    class="ngx-mat-input-tel-overlay-pane"
+    [backdropClass]="'ngx-mat-input-tel-overlay-backdrop'"
   >
     <input
       #menuSearchInput
