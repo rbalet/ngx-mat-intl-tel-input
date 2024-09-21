@@ -117,33 +117,24 @@ export class NgxMatInputTelComponent
 
   @Input() autocomplete: 'off' | 'tel' = 'off'
   @Input() cssClass?: string
-  @Input({ transform: booleanAttribute }) enablePlaceholder = true
-  @Input({ transform: booleanAttribute }) enableSearch = false
   @Input() errorStateMatcher: ErrorStateMatcher = this._defaultErrorStateMatcher
-  @Input() inputPlaceholder: string = ''
+  @Input() placeholder: string = ''
+  @Input() maxLength: string | number = 15
   @Input() name?: string
   @Input() onlyCountries: string[] = []
   @Input() preferredCountries: string[] = []
-  @Input({ transform: booleanAttribute }) resetOnChange = false
   @Input() searchPlaceholder = 'Search ...'
+  @Input({ transform: booleanAttribute }) enablePlaceholder = false
+  @Input({ transform: booleanAttribute }) enableSearch = false
+  @Input({ transform: booleanAttribute }) resetOnChange = false
   @Input()
   set format(value: PhoneNumberFormat) {
     this._format = value
-    this.phoneNumber = this.formattedPhoneNumber
+    this.phoneNumber = this.formattedPhoneNumber()
     this.stateChanges.next()
   }
   get format(): PhoneNumberFormat {
     return this._format
-  }
-
-  private _placeholder?: string
-  @Input()
-  set placeholder(value: string) {
-    this._placeholder = value
-    this.stateChanges.next(undefined)
-  }
-  get placeholder(): string {
-    return this._placeholder || ''
   }
 
   private _required = false
@@ -187,14 +178,6 @@ export class NgxMatInputTelComponent
   private _previousFormattedNumber?: string
   private _format: PhoneNumberFormat = 'default'
 
-  static getPhoneNumberPlaceHolder(countryISOCode: any): string | undefined {
-    try {
-      return getExampleNumber(countryISOCode, Examples)?.number.toString()
-    } catch (e) {
-      return e as any
-    }
-  }
-
   onTouched = () => {}
   propagateChange = (_: any) => {}
 
@@ -220,13 +203,14 @@ export class NgxMatInputTelComponent
       this.stateChanges.next()
     })
 
-    this.fetchCountryData()
     if (this.ngControl != null) {
       this.ngControl.valueAccessor = this
     }
   }
 
   ngOnInit() {
+    this.fetchCountryData()
+
     if (this.preferredCountries.length) {
       this.preferredCountries.forEach((iso2) => {
         const preferredCountry = this.allCountries
@@ -281,17 +265,21 @@ export class NgxMatInputTelComponent
   }
 
   public onPhoneNumberChange(): void {
-    if (this.phoneNumber)
+    if (!this.phoneNumber) this.value = null
+    else
       try {
         this.numberInstance = parsePhoneNumberFromString(
           this.phoneNumber.toString(),
           this.selectedCountry.iso2.toUpperCase() as CC,
         )
+
         this.formatAsYouTypeIfEnabled()
         this.value = this.numberInstance?.number
+        if (!this.value) throw new Error('Incorrect phone number')
+
         if (this.numberInstance && this.numberInstance.isValid()) {
-          if (this.phoneNumber !== this.formattedPhoneNumber) {
-            this.phoneNumber = this.formattedPhoneNumber
+          if (this.phoneNumber !== this.formattedPhoneNumber()) {
+            this.phoneNumber = this.formattedPhoneNumber()
           }
           if (
             this.selectedCountry.iso2 !== this.numberInstance.country &&
@@ -304,11 +292,8 @@ export class NgxMatInputTelComponent
       } catch (e) {
         // if no possible numbers are there,
         // then the full number is passed so that validator could be triggered and proper error could be shown
-        this.value = this.phoneNumber.toString()
+        this.value = this.formattedPhoneNumber().toString()
       }
-    else {
-      this.value = null
-    }
 
     this.propagateChange(this.value)
     this._changeDetectorRef.markForCheck()
@@ -361,13 +346,19 @@ export class NgxMatInputTelComponent
       }
 
       if (this.enablePlaceholder) {
-        country.placeHolder = NgxMatInputTelComponent.getPhoneNumberPlaceHolder(
-          country.iso2.toUpperCase(),
-        )
+        country.placeHolder = this._getPhoneNumberPlaceHolder(country.iso2.toUpperCase())
       }
 
       this.allCountries.push(country)
     })
+  }
+
+  private _getPhoneNumberPlaceHolder(countryISOCode: any): string | undefined {
+    try {
+      return getExampleNumber(countryISOCode, Examples)?.number
+    } catch (e) {
+      return e as any
+    }
   }
 
   registerOnChange(fn: any): void {
@@ -389,26 +380,24 @@ export class NgxMatInputTelComponent
       this.numberInstance = parsePhoneNumberFromString(value)
       if (this.numberInstance) {
         const countryCode = this.numberInstance.country
-        this.phoneNumber = this.formattedPhoneNumber
-        if (!countryCode) {
-          return
-        }
-        setTimeout(() => {
-          this.selectedCountry = this.getCountry(countryCode)
-          if (
-            this.selectedCountry.dialCode &&
-            !this.preferredCountries.includes(this.selectedCountry.iso2)
-          ) {
-            this.preferredCountriesInDropDown.push(this.selectedCountry)
-          }
-          this.countryChanged.emit(this.selectedCountry)
+        this.phoneNumber = this.formattedPhoneNumber()
 
-          // Initial value is set
-          this._changeDetectorRef.markForCheck()
-          this.stateChanges.next()
-        }, 1)
+        if (!countryCode) return
+
+        this.selectedCountry = this.getCountry(countryCode)
+        if (
+          this.selectedCountry.dialCode &&
+          !this.preferredCountries.includes(this.selectedCountry.iso2)
+        ) {
+          this.preferredCountriesInDropDown.push(this.selectedCountry)
+        }
+        this.countryChanged.emit(this.selectedCountry)
+
+        // Initial value is set
+        this.stateChanges.next()
       } else {
         this.phoneNumber = value
+        this.stateChanges.next(undefined)
       }
     }
     // Angular bug
@@ -418,7 +407,6 @@ export class NgxMatInputTelComponent
 
     // Value is set from outside using setValue()
     this._changeDetectorRef.markForCheck()
-    this.stateChanges.next(undefined)
   }
 
   setDescribedByIds(ids: string[]) {
@@ -439,7 +427,7 @@ export class NgxMatInputTelComponent
     this.stateChanges.next(undefined)
   }
 
-  private get formattedPhoneNumber(): E164Number | NationalNumber {
+  private formattedPhoneNumber(): E164Number | NationalNumber {
     if (!this.numberInstance) {
       return (this.phoneNumber?.toString() || '') as E164Number | NationalNumber
     }

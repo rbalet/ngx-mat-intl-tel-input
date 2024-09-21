@@ -99,10 +99,11 @@ If you want to show the sample number for the country selected or errors , use m
 
 | Options            | Type       | Default      | Description                                                                         |
 | ------------------ | ---------- | ------------ | ----------------------------------------------------------------------------------- |
-| enablePlaceholder  | `boolean`  | `true`       | Input placeholder text, which adapts to the country selected.                       |
+| enablePlaceholder  | `boolean`  | `false`      | Input placeholder text, which adapts to the country selected.                       |
 | enableSearch       | `boolean`  | `false`      | Whether to display a search bar to help filter down the list of countries           |
 | format             | `string`   | `default`    | Format of "as you type" input. Possible values: national, international, default    |
-| inputPlaceholder   | `string`   | `undefined`  | Placeholder for the input component.                                                |
+| placeholder        | `string`   | `undefined`  | Placeholder for the input component.                                                |
+| maxLength          | `number`   | `15`         | max length of the input.                                                            |
 | onlyCountries      | `string[]` | `[]`         | List of manually selected country abbreviations, which will appear in the dropdown. |
 | preferredCountries | `string[]` | `[]`         | List of country abbreviations, which will appear at the top.                        |
 | resetOnChange      | `boolean`  | `false`      | Reset input on country change                                                       |
@@ -115,10 +116,12 @@ If you want to show the sample number for the country selected or errors , use m
 | countryChanged | `EventEmitter<Country>` | `undefined` | On country change |
 
 ## Css variable
-| Name                            | Default        | Explanation                                         |
-| ------------------------------- | -------------- | --------------------------------------------------- |
-| `--ngxMatInputTel-opacity`      | `0`            | If you wish the country flag to be shown by default |
-| `--ngxMatInputTel-flag-display` | `inline-block` | If you wish to hide the country flag                |
+| Name                                   | Default        | Explanation                                                                   |
+| -------------------------------------- | -------------- | ----------------------------------------------------------------------------- |
+| `--ngxMatInputTel-opacity`             | `0`            | If you wish both, the country flag and the placeholder to be shown by default |
+| `--ngxMatInputTel-selector-opacity`    | `0`            | If you wish the country flag to be shown by default                           |
+| `--ngxMatInputTel-placeholder-opacity` | `0`            | If you wish the placeholder flag to be shown by default                       |
+| `--ngxMatInputTel-flag-display`        | `inline-block` | If you wish to hide the country flag                                          |
 
 ## Library Contributions
 

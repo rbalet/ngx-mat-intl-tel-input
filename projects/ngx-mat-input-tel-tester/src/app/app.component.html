@@ -10,15 +10,20 @@
         enablePlaceholder
         enableSearch
         [formControl]="phoneForm.controls.phone"
-        placeholder="Enter Number"
         describedBy="phoneInput"
         required
         #phone
+        maxLength="20"
       ></ngx-mat-input-tel>
       <mat-hint>e.g. {{ phone.selectedCountry.placeHolder }}</mat-hint>
       <mat-error *ngIf="phoneForm.controls.phone.errors?.required"> Required Field </mat-error>
       <mat-error *ngIf="f.submitted && phoneForm.controls.phone.errors?.validatePhoneNumber">
         Invalid Number
+      </mat-error>
+      <mat-error *ngIf="phoneForm.controls.phone.errors?.maxlength">
+        Length:{{ phoneForm.controls.phone.errors?.maxlength.actualLength }}/{{
+          phoneForm.controls.phone.errors?.maxlength.requiredLength
+        }}
       </mat-error>
     </mat-form-field>
 
@@ -64,8 +69,7 @@
         [searchPlaceholder]="'Buscar...'"
         [formControl]="profileForm.controls.phone"
         resetOnChange
-        placeholder="Enter Number"
-        enablePlaceholder
+        placeholder="Your number"
         enableSearch
         #phone1
       ></ngx-mat-input-tel>
