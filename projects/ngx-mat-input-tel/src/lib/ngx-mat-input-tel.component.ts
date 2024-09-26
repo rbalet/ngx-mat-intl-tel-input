@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y'
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { NgClass, NgFor, NgIf } from '@angular/common'
+import { NgClass } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -81,8 +81,6 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NgIf,
-    NgFor,
     NgClass,
 
     // Forms

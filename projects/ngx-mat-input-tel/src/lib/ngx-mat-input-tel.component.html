@@ -8,9 +8,10 @@
     (menuOpened)="menuSearchInput?.nativeElement?.focus()"
   >
     <span class="country-selector-flag flag" [ngClass]="selectedCountry.flagClass"></span>
-    <span class="country-selector-code" *ngIf="selectedCountry?.dialCode"
-      >+{{ selectedCountry.dialCode }}</span
-    >
+
+    @if(selectedCountry.dialCode) {
+    <span class="country-selector-code">+{{ selectedCountry.dialCode }}</span>
+    }
   </button>
 
   <mat-menu
@@ -18,9 +19,9 @@
     class="ngx-mat-input-tel-overlay-pane"
     [backdropClass]="'ngx-mat-input-tel-overlay-backdrop'"
   >
+    @if(enableSearch) {
     <input
       #menuSearchInput
-      *ngIf="enableSearch"
       class="country-search"
       [(ngModel)]="searchCriteria"
       type="text"
@@ -41,11 +42,12 @@
         margin: 2px;
       "
     />
+
+    } @for(country of preferredCountriesInDropDown; track $index ) {
     <button
       type="button"
       mat-menu-item
       class="country-list-button"
-      *ngFor="let country of preferredCountriesInDropDown"
       (click)="onCountrySelect(country, focusable)"
     >
       <div class="icon-wrapper">
@@ -53,38 +55,45 @@
       </div>
       <div class="label-wrapper">
         {{ country.name }}
-        <span [style]="!searchCriteria ? 'white-space: nowrap' : ''" *ngIf="country?.dialCode"
+
+        @if (country?.dialCode) {
+        <span [style]="!searchCriteria ? 'white-space: nowrap' : ''"
           >+{{ country.dialCode }}
-          <ng-container *ngIf="country.areaCodes">
-            {{ country.areaCodes.join(', ') }}
-          </ng-container>
+
+          @if(country.areaCodes) {
+          {{ country.areaCodes.join(', ') }}
+          }
         </span>
+        }
       </div>
     </button>
+    } @if(preferredCountriesInDropDown.length) {
+    <mat-divider></mat-divider>
+    } @for(country of allCountries | search : searchCriteria; track $index ) {
+    <button
+      type="button"
+      mat-menu-item
+      class="country-list-button"
+      (click)="onCountrySelect(country, focusable)"
+    >
+      <div class="icon-wrapper">
+        <div class="flag" [ngClass]="country.flagClass"></div>
+      </div>
+      <div class="label-wrapper">
+        {{ country.name }}
 
-    <mat-divider *ngIf="preferredCountriesInDropDown?.length"></mat-divider>
+        @if(country?.dialCode) {
+        <span [style]="!searchCriteria ? 'white-space: nowrap' : ''"
+          >+{{ country.dialCode }}
 
-    <ng-container *ngFor="let country of allCountries | search : searchCriteria">
-      <button
-        type="button"
-        mat-menu-item
-        class="country-list-button"
-        (click)="onCountrySelect(country, focusable)"
-      >
-        <div class="icon-wrapper">
-          <div class="flag" [ngClass]="country.flagClass"></div>
-        </div>
-        <div class="label-wrapper">
-          {{ country.name }}
-          <span [style]="!searchCriteria ? 'white-space: nowrap' : ''" *ngIf="country?.dialCode"
-            >+{{ country.dialCode }}
-            <ng-container *ngIf="country.areaCodes">
-              {{ country.areaCodes.join(', ') }}
-            </ng-container>
-          </span>
-        </div>
-      </button>
-    </ng-container>
+          @if(country.areaCodes) {
+          {{ country.areaCodes.join(', ') }}
+          }
+        </span>
+        }
+      </div>
+    </button>
+    }
   </mat-menu>
 
   <input

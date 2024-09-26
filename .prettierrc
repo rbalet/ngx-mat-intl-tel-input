@@ -3,5 +3,13 @@
   "singleQuote": true,
   "trailingComma": "all",
   "semi": false,
-  "arrowParens": "always"
+  "arrowParens": "always",
+  "overrides": [
+    {
+      "files": "*.html",
+      "options": {
+        "parser": "angular"
+      }
+    }
+  ]
 }
