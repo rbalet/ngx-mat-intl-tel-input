@@ -193,7 +193,7 @@ export class NgxMatInputTelComponent
   ) {
     super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, _ngControl)
 
-    _focusMonitor.monitor(_elementRef, true).subscribe((origin) => {
+    _focusMonitor.monitor(_elementRef, true).subscribe((origin: any) => {
       if (this.focused && !origin) {
         this.onTouched()
       }
@@ -404,6 +404,7 @@ export class NgxMatInputTelComponent
     // }
 
     // Value is set from outside using setValue()
+    this.onPhoneNumberChange()
     this._changeDetectorRef.markForCheck()
   }
 
