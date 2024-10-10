@@ -1,6 +1,6 @@
 import { FocusMonitor } from '@angular/cdk/a11y'
 import { coerceBooleanProperty } from '@angular/cdk/coercion'
-import { NgClass, NgFor, NgIf } from '@angular/common'
+import { NgClass } from '@angular/common'
 import {
   ChangeDetectionStrategy,
   ChangeDetectorRef,
@@ -81,8 +81,6 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
   ],
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
-    NgIf,
-    NgFor,
     NgClass,
 
     // Forms
@@ -195,7 +193,7 @@ export class NgxMatInputTelComponent
   ) {
     super(_defaultErrorStateMatcher, _parentForm, _parentFormGroup, _ngControl)
 
-    _focusMonitor.monitor(_elementRef, true).subscribe((origin) => {
+    _focusMonitor.monitor(_elementRef, true).subscribe((origin: any) => {
       if (this.focused && !origin) {
         this.onTouched()
       }
@@ -406,6 +404,7 @@ export class NgxMatInputTelComponent
     // }
 
     // Value is set from outside using setValue()
+    this.onPhoneNumberChange()
     this._changeDetectorRef.markForCheck()
   }
 
