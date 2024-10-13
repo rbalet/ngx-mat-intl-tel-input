@@ -1,7 +1,7 @@
 import { FormControl } from '@angular/forms'
 import { parsePhoneNumber, PhoneNumber } from 'libphonenumber-js'
 
-export const phoneNumberValidator = (control: FormControl) => {
+export const ngxMatInputTelValidator = (control: FormControl) => {
   const error = { validatePhoneNumber: true }
   let numberInstance: PhoneNumber
 

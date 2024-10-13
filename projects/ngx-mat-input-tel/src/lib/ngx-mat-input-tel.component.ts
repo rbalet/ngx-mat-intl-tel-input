@@ -49,7 +49,7 @@ import { Subject } from 'rxjs'
 import { CountryCode, Examples } from './data/country-code'
 import { Country } from './model/country.model'
 import { PhoneNumberFormat } from './model/phone-number-format.model'
-import { phoneNumberValidator } from './ngx-mat-input-tel.validator'
+import { ngxMatInputTelValidator } from './ngx-mat-input-tel.validator'
 import { SearchPipe } from './search.pipe'
 
 class ngxMatInputTelBase {
@@ -75,7 +75,7 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
     { provide: MatFormFieldControl, useExisting: NgxMatInputTelComponent },
     {
       provide: NG_VALIDATORS,
-      useValue: phoneNumberValidator,
+      useValue: ngxMatInputTelValidator,
       multi: true,
     },
   ],
