@@ -123,6 +123,15 @@ If you want to show the sample number for the country selected or errors , use m
 | `--ngxMatInputTel-placeholder-opacity` | `0`            | If you wish the placeholder flag to be shown by default                       |
 | `--ngxMatInputTel-flag-display`        | `inline-block` | If you wish to hide the country flag                                          |
 
+## Validator
+In case you had to manually remove the validator, the library exported it so you could add it back again.
+
+| Name                      | Description                                     | Example                                                |
+| ------------------------- | ----------------------------------------------- | ------------------------------------------------------ |
+| `ngxMatInputTelValidator` | The actual phone validator used for the control | `phoneControl.addValidators([ngxMatInputTlValidator])` |
+
+
+
 ## Library Contributions
 
 - Fork repo.
