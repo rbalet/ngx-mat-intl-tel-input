@@ -225,20 +225,23 @@ export class NgxMatInputTelComponent
       this.allCountries = this.allCountries.filter((c) => this.onlyCountries.includes(c.iso2))
     }
 
-    if (this.numberInstance && this.numberInstance.country) {
+    this._setDefaultCountry()
+
+    this._changeDetectorRef.markForCheck()
+    this.stateChanges.next()
+  }
+
+  private _setDefaultCountry() {
+    if (this.numberInstance?.country) {
       // If an existing number is present, we use it to determine selectedCountry
       this.selectedCountry = this.getCountry(this.numberInstance.country)
+    } else if (this.preferredCountriesInDropDown.length) {
+      this.selectedCountry = this.preferredCountriesInDropDown[0]
     } else {
-      if (this.preferredCountriesInDropDown.length) {
-        this.selectedCountry = this.preferredCountriesInDropDown[0]
-      } else {
-        this.selectedCountry = this.allCountries[0]
-      }
+      this.selectedCountry = this.allCountries[0]
     }
 
     this.countryChanged.emit(this.selectedCountry)
-    this._changeDetectorRef.markForCheck()
-    this.stateChanges.next()
   }
 
   ngDoCheck(): void {
@@ -263,41 +266,48 @@ export class NgxMatInputTelComponent
   }
 
   public onPhoneNumberChange(): void {
-    if (!this.phoneNumber) this.value = null
-    else
-      try {
-        this.numberInstance = parsePhoneNumberFromString(
-          this.phoneNumber.toString(),
-          this.selectedCountry.iso2.toUpperCase() as CC,
-        )
-
-        this.formatAsYouTypeIfEnabled()
-        this.value = this.numberInstance?.number
-        if (!this.value) throw new Error('Incorrect phone number')
-
-        if (this.numberInstance && this.numberInstance.isValid()) {
-          if (this.phoneNumber !== this.formattedPhoneNumber()) {
-            this.phoneNumber = this.formattedPhoneNumber()
-          }
-          if (
-            this.selectedCountry.iso2 !== this.numberInstance.country &&
-            this.numberInstance.country
-          ) {
-            this.selectedCountry = this.getCountry(this.numberInstance.country)
-            this.countryChanged.emit(this.selectedCountry)
-          }
-        }
-      } catch (e) {
-        // if no possible numbers are there,
-        // then the full number is passed so that validator could be triggered and proper error could be shown
-        this.value = this.formattedPhoneNumber().toString()
-      }
+    try {
+      this._setCountry()
+    } catch (e) {
+      // Pass a value to trigger the validator error
+      this.value = this.formattedPhoneNumber().toString()
+    }
 
     this.propagateChange(this.value)
     this._changeDetectorRef.markForCheck()
   }
 
-  public onCountrySelect(country: Country, el: any): void {
+  private _setCountry() {
+    if (!this.phoneNumber) {
+      this.value = null
+      return
+    }
+
+    this.numberInstance = parsePhoneNumberFromString(
+      this.phoneNumber.toString(),
+      this.selectedCountry.iso2.toUpperCase() as CC,
+    )
+
+    this.formatAsYouTypeIfEnabled()
+    this.value = this.numberInstance?.number
+
+    if (!this.value) throw new Error('Incorrect phone number')
+
+    if (this.numberInstance && this.numberInstance.isValid()) {
+      if (this.phoneNumber !== this.formattedPhoneNumber()) {
+        this.phoneNumber = this.formattedPhoneNumber()
+      }
+      if (
+        this.selectedCountry.iso2 !== this.numberInstance.country &&
+        this.numberInstance.country
+      ) {
+        this.selectedCountry = this.getCountry(this.numberInstance.country)
+        this.countryChanged.emit(this.selectedCountry)
+      }
+    }
+  }
+
+  public onCountrySelect(country: Country, el: HTMLInputElement): void {
     if (this.phoneNumber) {
       this.phoneNumber = this.numberInstance?.nationalNumber
     }
