@@ -1,7 +1,7 @@
-import { FormControl } from '@angular/forms'
+import { AbstractControl, ValidationErrors } from '@angular/forms'
 import { parsePhoneNumber, PhoneNumber } from 'libphonenumber-js'
 
-export const ngxMatInputTelValidator = (control: FormControl) => {
+export const ngxMatInputTelValidator = (control: AbstractControl): ValidationErrors | null => {
   const error = { validatePhoneNumber: true }
   let numberInstance: PhoneNumber
 
