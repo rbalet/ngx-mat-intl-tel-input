@@ -9,7 +9,8 @@
     "test:ci": "ng test ngx-mat-input-tel --watch=false --code-coverage --no-progress --browsers=ChromeHeadless",
     "lint": "ng lint",
     "e2e": "ng e2e",
-    "publish": "ng build ngx-mat-input-tel --configuration production && npm publish ./dist/ngx-mat-input-tel",
+    "publish": "ng build ngx-mat-input-tel --configuration production && npm run copy-files && npm publish ./dist/ngx-mat-input-tel",
+    "copy-files": "cp README.md dist/ngx-mat-input-tel && cp LICENSE dist/ngx-mat-input-tel",
     "prepare": "husky"
   },
   "private": true,
