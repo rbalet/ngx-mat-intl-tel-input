@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-input-tel-vgt",
-  "version": "18.5.4",
+  "version": "19.0.0",
   "scripts": {
     "ng": "ng",
     "start": "ng serve",
@@ -70,10 +70,5 @@
   },
   "release": {
     "extends": "@semantic-release/apm-config"
-  },
-  "description": "test",
-  "main": "index.d.ts",
-  "author": "lc",
-  "license": "ISC",
-  "repository": "https://github.com/ChristianLoosliVGT/ngx-mat-input-tel.git"
+  }
 }
