@@ -1,5 +1,5 @@
 {
-  "name": "ngx-mat-input-tel",
+  "name": "ngx-mat-input-tel-test",
   "version": "18.5.3",
   "scripts": {
     "ng": "ng",
@@ -11,9 +11,10 @@
     "e2e": "ng e2e",
     "publish": "ng build ngx-mat-input-tel --configuration production && npm run copy-files && npm publish ./dist/ngx-mat-input-tel",
     "copy-files": "cp README.md dist/ngx-mat-input-tel && cp LICENSE dist/ngx-mat-input-tel",
-    "prepare": "husky"
+    "prepare": "husky",
+    "pack-lib": "cd dist/ngx-mat-input-tel && npm pack"
   },
-  "private": true,
+  "private": false,
   "dependencies": {
     "@angular/animations": "19.0.0",
     "@angular/cdk": "19.0.0",
@@ -36,8 +37,8 @@
     "@angular-devkit/core": "19.0.0",
     "@angular-devkit/schematics": "19.0.0",
     "@angular-eslint/builder": "18.3.1",
-    "@angular-eslint/eslint-plugin-template": "18.3.1",
     "@angular-eslint/eslint-plugin": "18.3.1",
+    "@angular-eslint/eslint-plugin-template": "18.3.1",
     "@angular-eslint/schematics": "18.3.1",
     "@angular-eslint/template-parser": "18.3.1",
     "@angular/cli": "19.0.0",
@@ -50,16 +51,16 @@
     "@types/jasminewd2": "2.0.13",
     "@types/node": "20.16.11",
     "@typescript-eslint/utils": "8.0.0",
-    "eslint-config-prettier": "9.1.0",
     "eslint": "9.9.1",
+    "eslint-config-prettier": "9.1.0",
     "husky": "9.1.6",
     "jasmine-core": "5.3.0",
     "jasmine-spec-reporter": "7.0.0",
+    "karma": "6.4.4",
     "karma-chrome-launcher": "3.2.0",
     "karma-coverage-istanbul-reporter": "3.0.3",
-    "karma-jasmine-html-reporter": "2.1.0",
     "karma-jasmine": "5.1.0",
-    "karma": "6.4.4",
+    "karma-jasmine-html-reporter": "2.1.0",
     "ng-packagr": "19.0.0",
     "prettier": "3.3.3",
     "protractor": "7.0.0",
@@ -69,5 +70,10 @@
   },
   "release": {
     "extends": "@semantic-release/apm-config"
-  }
+  },
+  "description": "test",
+  "main": "index.d.ts",
+  "author": "lc",
+  "license": "ISC",
+  "repository": "https://github.com/ChristianLoosliVGT/ngx-mat-input-tel.git"
 }
