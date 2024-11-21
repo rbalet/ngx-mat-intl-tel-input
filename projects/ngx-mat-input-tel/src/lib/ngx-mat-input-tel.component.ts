@@ -29,9 +29,7 @@ import {
 } from '@angular/forms'
 import {
   ErrorStateMatcher,
-  MatRippleModule,
-  _AbstractConstructor,
-  mixinErrorState,
+  MatRippleModule
 } from '@angular/material/core'
 import { MatDividerModule } from '@angular/material/divider'
 import { MatFormFieldControl } from '@angular/material/form-field'
@@ -63,36 +61,32 @@ class ngxMatInputTelBase {
 }
 
 @Component({
-  standalone: true,
-  selector: 'ngx-mat-input-tel',
-  templateUrl: './ngx-mat-input-tel.component.html',
-  styleUrls: ['./ngx-mat-input-tel.component.scss'],
-  providers: [
-    CountryCode,
-    { provide: MatFormFieldControl, useExisting: NgxMatInputTelComponent },
-    {
-      provide: NG_VALIDATORS,
-      useValue: ngxMatInputTelValidator,
-      multi: true,
-    },
-  ],
-  changeDetection: ChangeDetectionStrategy.OnPush,
-  imports: [
-    NgClass,
-
-    // Forms
-    FormsModule,
-    ReactiveFormsModule,
-    MatInputModule,
-
-    // Mat
-    MatMenuModule,
-    MatRippleModule,
-    MatDividerModule,
-
-    // Pipes
-    SearchPipe,
-  ],
+    selector: 'ngx-mat-input-tel',
+    templateUrl: './ngx-mat-input-tel.component.html',
+    styleUrls: ['./ngx-mat-input-tel.component.scss'],
+    providers: [
+        CountryCode,
+        { provide: MatFormFieldControl, useExisting: NgxMatInputTelComponent },
+        {
+            provide: NG_VALIDATORS,
+            useValue: ngxMatInputTelValidator,
+            multi: true,
+        },
+    ],
+    changeDetection: ChangeDetectionStrategy.OnPush,
+    imports: [
+        NgClass,
+        // Forms
+        FormsModule,
+        ReactiveFormsModule,
+        MatInputModule,
+        // Mat
+        MatMenuModule,
+        MatRippleModule,
+        MatDividerModule,
+        // Pipes
+        SearchPipe,
+    ]
 })
 export class NgxMatInputTelComponent
   extends ngxMatInputTelBase
