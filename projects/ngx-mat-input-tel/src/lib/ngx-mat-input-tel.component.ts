@@ -19,6 +19,7 @@ import {
   booleanAttribute,
 } from '@angular/core'
 import {
+  FormControl,
   FormGroupDirective,
   FormsModule,
   NG_VALIDATORS,
@@ -61,10 +62,6 @@ class ngxMatInputTelBase {
   ) {}
 }
 
-const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
-  ngxMatInputTelBase as _AbstractConstructor<any>,
-)
-
 @Component({
   standalone: true,
   selector: 'ngx-mat-input-tel',
@@ -98,7 +95,7 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
   ],
 })
 export class NgxMatInputTelComponent
-  extends _ngxMatInputTelMixinBase
+  extends ngxMatInputTelBase
   implements OnInit, DoCheck, OnDestroy
 {
   static nextId = 0
@@ -229,6 +226,16 @@ export class NgxMatInputTelComponent
 
     this._changeDetectorRef.markForCheck()
     this.stateChanges.next()
+  }
+
+  updateErrorState() {
+    if (this.ngControl && this.ngControl.invalid && (this.ngControl.touched || (this._parentForm && this._parentForm.submitted))) {
+      const currentState = this.errorStateMatcher.isErrorState(this.ngControl.control as FormControl, this.ngControl?.value);
+      if (currentState !== this.errorState) {
+        this.errorState = currentState;
+        this._changeDetectorRef.markForCheck();
+      }
+    }
   }
 
   private _setDefaultCountry() {
