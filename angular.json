@@ -57,13 +57,16 @@
       "schematics": {},
       "architect": {
         "build": {
-          "builder": "@angular-devkit/build-angular:browser",
+          "builder": "@angular-devkit/build-angular:application",
           "options": {
             "aot": true,
-            "outputPath": "dist/ngx-mat-input-tel-tester",
+            "outputPath": {
+              "base": "dist/ngx-mat-input-tel-tester"
+            },
             "index": "projects/ngx-mat-input-tel-tester/src/index.html",
-            "main": "projects/ngx-mat-input-tel-tester/src/main.ts",
-            "polyfills": "projects/ngx-mat-input-tel-tester/src/polyfills.ts",
+            "polyfills": [
+              "projects/ngx-mat-input-tel-tester/src/polyfills.ts"
+            ],
             "tsConfig": "projects/ngx-mat-input-tel-tester/tsconfig.app.json",
             "assets": [
               "projects/ngx-mat-input-tel-tester/src/favicon.ico",
@@ -73,7 +76,8 @@
               "./node_modules/@angular/material/prebuilt-themes/indigo-pink.css",
               "projects/ngx-mat-input-tel-tester/src/styles.scss"
             ],
-            "scripts": []
+            "scripts": [],
+            "browser": "projects/ngx-mat-input-tel-tester/src/main.ts"
           },
           "configurations": {
             "production": {
@@ -88,8 +92,6 @@
               "namedChunks": false,
               "aot": true,
               "extractLicenses": true,
-              "vendorChunk": false,
-              "buildOptimizer": true,
               "budgets": [
                 {
                   "type": "initial",
