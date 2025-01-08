@@ -44,15 +44,19 @@ jobs:
         uses: actions/checkout@v4
         with:
           fetch-depth: 0
+
       - name: ⬇️ Get Node.js
         uses: actions/setup-node@v4
         with:
           node-version: 20
           cache: 'npm'
+
       - name: 📦 Install dependencies
         run: npm ci
+
       - name: 🏗️ Build
-        run: npm run build
+        run: npm run build && npm run copy-files
+
       - name: 🚀 Release
         run: cd dist/ngx-mat-input-tel && npx semantic-release --branches master
         env:
