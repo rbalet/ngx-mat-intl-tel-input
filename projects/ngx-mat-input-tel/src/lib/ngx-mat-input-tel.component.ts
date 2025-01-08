@@ -66,7 +66,6 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
 )
 
 @Component({
-  standalone: true,
   selector: 'ngx-mat-input-tel',
   templateUrl: './ngx-mat-input-tel.component.html',
   styleUrls: ['./ngx-mat-input-tel.component.scss'],
@@ -82,17 +81,14 @@ const _ngxMatInputTelMixinBase: typeof ngxMatInputTelBase = mixinErrorState(
   changeDetection: ChangeDetectionStrategy.OnPush,
   imports: [
     NgClass,
-
     // Forms
     FormsModule,
     ReactiveFormsModule,
     MatInputModule,
-
     // Mat
     MatMenuModule,
     MatRippleModule,
     MatDividerModule,
-
     // Pipes
     SearchPipe,
   ],
