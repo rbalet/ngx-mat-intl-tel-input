@@ -1,6 +1,6 @@
 {
   "name": "ngx-mat-input-tel",
-  "version": "18.5.3",
+  "version": "19.0.0",
   "author": {
     "name": "Raphaël Balet",
     "email": "raphael.balet@outlook.com"
@@ -9,12 +9,12 @@
     "raphael.balet@outlook.com"
   ],
   "peerDependencies": {
-    "@angular/common": ">=15.x",
-    "@angular/core": ">=15.x",
-    "@angular/forms": ">=15.x",
-    "@angular/platform-browser": ">=15.x",
-    "@angular/platform-browser-dynamic": ">=15.x",
-    "libphonenumber-js": "^1.11.11"
+    "@angular/common": ">=19.x",
+    "@angular/core": ">=19.x",
+    "@angular/forms": ">=19.x",
+    "@angular/platform-browser": ">=19.x",
+    "@angular/platform-browser-dynamic": ">=19.x",
+    "libphonenumber-js": "^1.11.17"
   },
   "repository": {
     "type": "git",
