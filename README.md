@@ -16,8 +16,6 @@ This is a fork from the [ngx-mat-intl-tel-input](https://github.com/tanansatpal/
 
 - Angular >=15
 - Angular Material >=15
-- ReactiveFormsModule
-- FormsModule
 - Validation with [libphonenumber-js](https://github.com/catamphetamine/libphonenumber-js)
 
 ## Installation
