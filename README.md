@@ -157,4 +157,11 @@ In your project run:
 * maintainer [Raphaël Balet](https://github.com/rbalet) 
 * Forked from [ngx-mat-intl-tel-input](https://github.com/tanansatpal/ngx-mat-intl-tel-input)
 
+### Contributors
+Contributions are welcome! See our [contribution notes](CONTRIBUTING.md).
+
+[<img alt="Contributor rbalet" src="https://avatars.githubusercontent.com/u/44493964?v=4&size=128" width=64>](https://github.com/rbalet)
+[<img alt="Contributor ChristianLoosliVGT" src="https://avatars.githubusercontent.com/u/126682673?v=4&size=128" width=64>](https://github.com/ChristianLoosliVGT)
+
+
 [![BuyMeACoffee](https://www.buymeacoffee.com/assets/img/custom_images/purple_img.png)](https://www.buymeacoffee.com/widness)
